@@ -1,0 +1,22 @@
+{
+  "proveedor": {"nombre": "Diego Ramírez Magaña", "servicio": "Desarrollo web y sistemas a la medida", "ciudad": "Mérida, Yucatán", "whatsapp": "999 256 5297", "correo": "dramirezmagana@gmail.com"},
+  "paquetes": {
+    "presencia": {
+      "nombre": "Presencia", "precio": 4500, "mensual": 400, "dias": "5 a 7 días hábiles",
+      "incluye": ["Sitio de 4 a 5 secciones adaptado a celular", "Botón directo a WhatsApp", "Mapa, horarios y datos de contacto", "Alta o mejora del perfil de Google Business", "Dominio y hosting el primer año"],
+      "mensual_incluye": ["Hosting y certificado de seguridad (SSL)", "Respaldos", "1 cambio de contenido al mes", "Soporte por WhatsApp"]
+    },
+    "ventas": {
+      "nombre": "Ventas", "precio": 8500, "mensual": 700, "dias": "10 a 14 días hábiles",
+      "incluye": ["Todo lo del paquete Presencia", "Catálogo o menú que ustedes pueden editar", "Pedidos por WhatsApp con el producto ya seleccionado", "Sección de promociones"],
+      "mensual_incluye": ["Todo lo de la mensualidad Presencia", "Cambios de menú, precios y promociones sin límite", "Reporte mensual de visitas"]
+    },
+    "sistema": {
+      "nombre": "Sistema", "precio": 12000, "mensual": 1200, "dias": "3 a 4 semanas",
+      "incluye": ["Sistema web a la medida con usuarios y contraseña", "Panel de administración", "Base de datos con respaldos", "Capacitación de uso"],
+      "mensual_incluye": ["Hosting, base de datos y respaldos", "Soporte y corrección de errores", "Mejoras menores mensuales"]
+    }
+  },
+  "no_incluye": ["Fotografía profesional", "Redacción extensa de textos", "Diseño de logotipo", "Publicidad pagada", "Funciones nuevas fuera del alcance acordado (se cotizan aparte)"],
+  "condiciones": ["50% de anticipo para iniciar y 50% al entregar", "2 rondas de revisiones incluidas", "El dominio queda registrado a nombre del cliente", "La mensualidad se puede cancelar con 30 días de aviso", "Esta propuesta es válida por 15 días"]
+}

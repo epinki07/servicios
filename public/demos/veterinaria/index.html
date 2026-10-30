@@ -1,0 +1,577 @@
+<title>Ceiba Veterinaria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: página de producto estilo Apple. Bloques amplios centrados, un acento verde ceiba
+   y un coral cálido para lo urgente. Cada sección es una interacción propia del giro. */
+:root {
+  --bg: #fbfbfd;
+  --bg-2: #f2f3f0;
+  --card: #ffffff;
+  --fg: #1d1d1f;
+  --muted: #6b6f69;
+  --line: #e3e5e0;
+  --accent: #0f7a5f;
+  --accent-soft: #dff1e9;
+  --warm: #e8603c;
+  --warm-soft: #fde8e1;
+  --glass: rgba(251, 251, 253, 0.72);
+  --shadow: 0 1px 2px rgba(20, 30, 25, .06), 0 12px 32px rgba(20, 30, 25, .08);
+  --pet-fur: #e7c49a;
+  --pet-fur-2: #c99a69;
+  --pet-ink: #2a2622;
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c0d0c; --bg-2: #151715; --card: #1b1d1b; --fg: #f3f4f1; --muted: #a2a79f; --line: #2b2e2a;
+    --accent: #3fc79c; --accent-soft: #143328; --warm: #ff8a66; --warm-soft: #3a1d15;
+    --glass: rgba(12, 13, 12, 0.7); --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+    --pet-fur: #d9b186; --pet-fur-2: #b5865a; --pet-ink: #1a1714; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c0d0c; --bg-2: #151715; --card: #1b1d1b; --fg: #f3f4f1; --muted: #a2a79f; --line: #2b2e2a;
+  --accent: #3fc79c; --accent-soft: #143328; --warm: #ff8a66; --warm-soft: #3a1d15;
+  --glass: rgba(12, 13, 12, 0.7); --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+  --pet-fur: #d9b186; --pet-fur-2: #b5865a; --pet-ink: #1a1714; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--text); font-size: 17px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--glass); }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); letter-spacing: -0.025em; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: clamp(19px, 2.4vw, 23px); color: var(--muted); max-width: 34ch; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+/* aviso de demo */
+.demo-bar {
+  background: var(--fg); color: var(--bg); font-size: 13px; text-align: center; padding-block: 8px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* navegación */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--glass);
+  backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 52px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; font-size: 18px; text-decoration: none; color: var(--fg); }
+.brand svg { width: 26px; height: 26px; }
+.nav-links { display: flex; gap: 22px; font-size: 14px; }
+.nav-links a { color: var(--muted); text-decoration: none; }
+.nav-links a:hover { color: var(--fg); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer;
+  border-radius: 999px; padding: 12px 22px; font-weight: 700; font-size: 16px; text-decoration: none;
+  transition: transform .25s var(--ease), background .25s, box-shadow .25s;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 35%, transparent); }
+.btn-ghost { background: transparent; color: var(--accent); }
+.btn-sm { padding: 8px 16px; font-size: 14px; }
+@media (max-width: 760px) { .nav-links { display: none; } }
+
+/* hero */
+.hero { padding-block: 64px 40px; text-align: center; }
+.hero h1 { font-size: clamp(44px, 8vw, 92px); font-weight: 800; line-height: 1.02; }
+.hero h1 .soft { color: var(--accent); }
+.hero .lede { margin: 18px auto 0; text-align: center; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+.pet-stage { position: relative; margin: 36px auto 0; max-width: 520px; }
+.pet-switch { display: inline-flex; background: var(--bg-2); border-radius: 999px; padding: 4px; gap: 4px; margin-top: 20px; position: relative; }
+.pet-switch button { border: 0; background: transparent; padding: 8px 20px; border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer; position: relative; z-index: 1; color: var(--muted); transition: color .3s; }
+.pet-switch button[aria-pressed="true"] { color: var(--fg); }
+.pet-switch .knob { position: absolute; top: 4px; bottom: 4px; left: 4px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow); transition: transform .45s var(--ease), width .45s var(--ease); }
+.pet { width: 100%; max-width: 360px; height: auto; display: block; margin: 0 auto; cursor: pointer; touch-action: manipulation; }
+.pet .ear, .pet .face, .pet .tail { transition: transform .6s var(--ease), opacity .4s; transform-box: fill-box; }
+.pet .cat-only { opacity: 0; transform: scale(.6); transform-origin: center bottom; }
+.pet.is-cat .cat-only { opacity: 1; transform: scale(1); }
+.pet.is-cat .dog-only { opacity: 0; transform: scale(.6); }
+.pet .dog-only { transform-origin: center top; }
+.pet .pupil { transition: transform .12s linear; }
+.pet .lid { transform-box: fill-box; transform-origin: center top; transform: scaleY(0); }
+.pet.blink .lid { animation: blink .22s ease; }
+@keyframes blink { 50% { transform: scaleY(1); } }
+.pet .tail { transform-origin: 0% 100%; }
+.pet.happy .tail { animation: wag .35s ease-in-out 4; }
+@keyframes wag { 50% { transform: rotate(-22deg); } }
+.heart { position: absolute; pointer-events: none; font-size: 26px; animation: rise 1.1s var(--ease) forwards; color: var(--warm); }
+@keyframes rise { from { transform: translate(-50%, 0) scale(.6); opacity: 1; } to { transform: translate(-50%, -110px) scale(1.2); opacity: 0; } }
+.pet-hint { font-size: 14px; color: var(--muted); margin-top: 6px; }
+
+/* frase que se ilumina con el scroll */
+.reveal { padding-block: 72px; background: var(--bg-2); }
+.reveal p { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5.4vw, 60px); line-height: 1.12; letter-spacing: -.03em; max-width: 18ch; }
+.reveal .w { color: color-mix(in srgb, var(--fg) 22%, transparent); transition: color .35s; }
+.reveal .w.on { color: var(--fg); }
+.reveal .w.on.hl { color: var(--accent); }
+
+/* secciones */
+section.block { padding-block: 88px; }
+.block-head { display: grid; gap: 12px; margin-bottom: 36px; }
+.block-head h2 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; line-height: 1.05; }
+
+/* servicios por mascota */
+.seg { display: inline-flex; background: var(--bg-2); border-radius: 999px; padding: 4px; gap: 4px; flex-wrap: wrap; }
+.seg button { border: 0; background: transparent; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: var(--shadow); }
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 28px; }
+.svc { background: var(--card); border-radius: 24px; padding: 26px; box-shadow: var(--shadow); display: grid; gap: 10px; min-width: 0;
+  transition: transform .5s var(--ease); }
+.svc:hover { transform: translateY(-4px); }
+.svc .ic { width: 46px; height: 46px; border-radius: 14px; background: var(--accent-soft); display: grid; place-items: center; }
+.svc .ic svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.svc h3 { font-size: 21px; }
+.svc p { color: var(--muted); font-size: 15px; }
+.services.swap .svc { animation: swapIn .55s var(--ease) both; }
+.services.swap .svc:nth-child(2) { animation-delay: .05s; }
+.services.swap .svc:nth-child(3) { animation-delay: .1s; }
+.services.swap .svc:nth-child(4) { animation-delay: .15s; }
+@keyframes swapIn { from { transform: translateY(14px) scale(.98); opacity: .2; } to { transform: none; opacity: 1; } }
+
+/* urgencia */
+.urg { background: var(--card); border-radius: 32px; box-shadow: var(--shadow); padding: clamp(24px, 4vw, 44px); display: grid; gap: 24px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { border: 1.5px solid var(--line); background: transparent; border-radius: 999px; padding: 10px 16px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .25s var(--ease); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.verdict { border-radius: 22px; padding: 22px; display: grid; gap: 6px; transition: background .4s, color .4s; background: var(--bg-2); }
+.verdict strong { font-family: var(--display); font-size: 24px; letter-spacing: -.02em; }
+.verdict.urgent { background: var(--warm-soft); }
+.verdict.urgent strong { color: var(--warm); }
+.verdict.ok { background: var(--accent-soft); }
+.verdict.ok strong { color: var(--accent); }
+.verdict .pulse { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--warm); margin-right: 8px; animation: pulse 1.2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--warm) 60%, transparent); } 100% { box-shadow: 0 0 0 14px transparent; } }
+.fine { font-size: 13px; color: var(--muted); }
+
+/* vacunas */
+.vac { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 28px; align-items: start; }
+@media (max-width: 820px) { .vac { grid-template-columns: 1fr; } }
+.vac-ctrl { background: var(--card); border-radius: 28px; padding: 28px; box-shadow: var(--shadow); display: grid; gap: 20px; }
+.age { font-family: var(--display); font-size: 64px; font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.age small { font-size: 20px; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 28px; }
+.timeline { position: relative; display: grid; gap: 14px; padding-left: 30px; }
+.timeline::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.timeline .fill { position: absolute; left: 10px; top: 8px; width: 2px; background: var(--accent); transition: height .6s var(--ease); }
+.step { position: relative; background: var(--card); border-radius: 18px; padding: 16px 18px; box-shadow: var(--shadow); transition: transform .4s var(--ease), opacity .4s; }
+.step::before { content: ""; position: absolute; left: -26px; top: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); transition: all .4s; }
+.step.done { opacity: .55; }
+.step.done::before { background: var(--accent); border-color: var(--accent); }
+.step.next { transform: translateX(6px); outline: 2px solid var(--accent); }
+.step.next::before { background: var(--bg); border-color: var(--accent); box-shadow: 0 0 0 6px var(--accent-soft); }
+.step h4 { margin: 0; font-size: 17px; }
+.step span { font-size: 14px; color: var(--muted); }
+.tag-next { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-left: 8px; }
+
+/* citas */
+.book { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .book { grid-template-columns: 1fr; } }
+.panel { background: var(--card); border-radius: 28px; box-shadow: var(--shadow); padding: 26px; display: grid; gap: 22px; min-width: 0; }
+.panel h3 { font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: 0; font-family: var(--text); }
+.days { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+.day { flex: 0 0 auto; scroll-snap-align: start; width: 74px; border: 1.5px solid var(--line); background: transparent; border-radius: 18px; padding: 10px 0; cursor: pointer; display: grid; gap: 2px; text-align: center; transition: all .25s var(--ease); }
+.day b { font-size: 24px; font-family: var(--display); font-variant-numeric: tabular-nums; }
+.day small { font-size: 12px; color: var(--muted); text-transform: capitalize; }
+.day[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.day[aria-pressed="true"] small { color: rgba(255,255,255,.85); }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+.slot { border: 1.5px solid var(--line); background: transparent; border-radius: 12px; padding: 10px 0; font-weight: 700; font-variant-numeric: tabular-nums; cursor: pointer; transition: all .2s; }
+.slot:disabled { opacity: .35; text-decoration: line-through; cursor: not-allowed; }
+.slot[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.ticket { position: sticky; top: 72px; background: var(--fg); color: var(--bg); border-radius: 28px; padding: 28px; display: grid; gap: 14px; overflow: hidden; }
+.ticket .row { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; border-bottom: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); padding-bottom: 10px; }
+.ticket .row span:first-child { opacity: .65; }
+.ticket .row span:last-child { font-weight: 700; text-align: right; }
+.ticket .btn { background: var(--accent); color: #fff; margin-top: 6px; }
+.ticket .btn:disabled { opacity: .4; cursor: not-allowed; }
+.done-card { display: grid; place-items: center; gap: 10px; text-align: center; padding-block: 12px; }
+.check { width: 72px; height: 72px; }
+.check circle { stroke: var(--accent); stroke-width: 4; fill: none; stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw .6s var(--ease) forwards; }
+.check path { stroke: var(--bg); stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw .4s .45s var(--ease) forwards; }
+.ticket .check path { stroke: #fff; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* pie */
+footer { padding-block: 56px; border-top: 1px solid var(--line); }
+footer .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; font-size: 15px; }
+footer h4 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+footer p { color: var(--fg); }
+.legal { font-size: 13px; color: var(--muted); grid-column: 1 / -1; }
+
+/* botón flotante de WhatsApp */
+.fab { position: fixed; right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 25;
+  width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 28px rgba(37, 211, 102, .4);
+  border: 0; cursor: pointer; transition: transform .3s var(--ease); }
+.fab:hover { transform: scale(1.08); }
+.fab svg { width: 30px; height: 30px; fill: #fff; }
+.toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%) translateY(20px); opacity: 0;
+  background: var(--fg); color: var(--bg); padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; z-index: 40;
+  transition: all .35s var(--ease); pointer-events: none; max-width: calc(100% - 32px); text-align: center; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<div class="demo-bar">Sitio de ejemplo · Ceiba Veterinaria es un negocio ficticio creado para mostrar cómo podría verse tu página.</div>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--accent)"/><path d="M16 25V13M16 13c-4 0-7-3-7-6 3 0 7 2 7 6zm0 0c4 0 7-3 7-6-3 0-7 2-7 6zm0 4c-3 0-5-2-5-4 2 0 5 1 5 4zm0 0c3 0 5-2 5-4-2 0-5 1-5 4z" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      Ceiba
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#urgencia">Urgencias</a>
+      <a href="#vacunas">Vacunas</a>
+      <a href="#citas">Citas</a>
+    </div>
+    <a class="btn btn-primary btn-sm" href="#citas">Agendar</a>
+  </div>
+</nav>
+
+<main id="inicio">
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Clínica veterinaria · Mérida</p>
+      <h1>Cuidado que<br><span class="soft">se siente.</span></h1>
+      <p class="lede">Consultas, vacunas, cirugía y urgencias. Para perros, gatos y todos los que son familia.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#citas">Agenda una cita</a>
+        <a class="btn btn-ghost" href="#urgencia">¿Es una urgencia? →</a>
+      </div>
+      <div class="pet-stage" id="petStage">
+        <svg class="pet" id="pet" viewBox="0 0 360 300" role="img" aria-label="Ilustración de una mascota que sigue tu cursor">
+          <g class="tail dog-only"><path d="M262 230 q40 -10 52 -54" stroke="var(--pet-fur-2)" stroke-width="16" fill="none" stroke-linecap="round"/></g>
+          <ellipse cx="180" cy="246" rx="92" ry="42" fill="var(--pet-fur)"/>
+          <g class="ear dog-only"><ellipse cx="100" cy="128" rx="30" ry="62" fill="var(--pet-fur-2)" transform="rotate(18 100 128)"/><ellipse cx="260" cy="128" rx="30" ry="62" fill="var(--pet-fur-2)" transform="rotate(-18 260 128)"/></g>
+          <g class="ear cat-only"><path d="M104 120 L118 40 L168 92 Z" fill="var(--pet-fur-2)"/><path d="M256 120 L242 40 L192 92 Z" fill="var(--pet-fur-2)"/><path d="M118 104 L124 62 L150 90 Z" fill="var(--warm-soft)"/><path d="M242 104 L236 62 L210 90 Z" fill="var(--warm-soft)"/></g>
+          <circle class="face" cx="180" cy="150" r="84" fill="var(--pet-fur)"/>
+          <ellipse cx="180" cy="186" rx="42" ry="30" fill="color-mix(in srgb, var(--pet-fur) 70%, #fff)"/>
+          <g id="eyes">
+            <circle cx="148" cy="140" r="15" fill="#fff"/><circle cx="212" cy="140" r="15" fill="#fff"/>
+            <circle class="pupil" cx="148" cy="140" r="8" fill="var(--pet-ink)"/><circle class="pupil" cx="212" cy="140" r="8" fill="var(--pet-ink)"/>
+            <rect class="lid" x="132" y="124" width="32" height="32" rx="16" fill="var(--pet-fur)"/><rect class="lid" x="196" y="124" width="32" height="32" rx="16" fill="var(--pet-fur)"/>
+          </g>
+          <path d="M168 172 q12 10 24 0 q-12 -8 -24 0z" fill="var(--pet-ink)"/>
+          <path d="M180 180 v10 M180 190 q-10 10 -20 2 M180 190 q10 10 20 2" stroke="var(--pet-ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <g class="cat-only" stroke="var(--pet-ink)" stroke-width="2" stroke-linecap="round" opacity=".7"><path d="M140 182 h-40 M140 190 l-38 8 M220 182 h40 M220 190 l38 8"/></g>
+          <g class="dog-only"><ellipse cx="180" cy="212" rx="12" ry="9" fill="var(--warm)" opacity=".85"/></g>
+        </svg>
+        <div class="pet-switch" role="group" aria-label="Tipo de mascota">
+          <span class="knob" id="knob"></span>
+          <button type="button" id="petDog" aria-pressed="true">Perro</button>
+          <button type="button" id="petCat" aria-pressed="false">Gato</button>
+        </div>
+        <p class="pet-hint">Tócalo y mueve el cursor: te está viendo.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="reveal" aria-label="Lo que hacemos">
+    <div class="wrap"><p id="revealText">Consultas. Vacunas. Cirugía. Estética. Urgencias. Todo en un lugar, con alguien que conoce a tu mascota por su nombre.</p></div>
+  </section>
+
+  <section class="block" id="servicios">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Pensados para<br>cada especie.</h2>
+      </div>
+      <div class="seg" role="group" aria-label="Elige tu mascota">
+        <button type="button" data-k="perro" aria-pressed="true">Perros</button>
+        <button type="button" data-k="gato" aria-pressed="false">Gatos</button>
+        <button type="button" data-k="exotico" aria-pressed="false">Exóticos</button>
+      </div>
+      <div class="services" id="services"></div>
+    </div>
+  </section>
+
+  <section class="block" id="urgencia" style="background: var(--bg-2)">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">¿Es una urgencia?</p>
+        <h2>Dinos qué notas.<br>Te decimos qué hacer.</h2>
+      </div>
+      <div class="urg">
+        <div class="chips" id="symptoms"></div>
+        <div class="verdict" id="verdict" aria-live="polite">
+          <strong>Elige uno o más síntomas</strong>
+          <span>Te orientamos en segundos sobre si conviene venir de inmediato o agendar una cita.</span>
+        </div>
+        <p class="fine">Orientación general, no sustituye la valoración de un médico veterinario. Ante cualquier duda, llámanos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="vacunas">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Calendario de vacunas</p>
+        <h2>¿Qué le toca<br>a tu cachorro?</h2>
+      </div>
+      <div class="vac">
+        <div class="vac-ctrl">
+          <div class="seg" role="group" aria-label="Especie">
+            <button type="button" data-v="perro" aria-pressed="true">Cachorro</button>
+            <button type="button" data-v="gato" aria-pressed="false">Gatito</button>
+          </div>
+          <div>
+            <label for="ageRange" class="fine">Edad de tu mascota</label>
+            <div class="age"><span id="ageVal">10</span> <small>semanas</small></div>
+          </div>
+          <input id="ageRange" type="range" min="4" max="60" value="10" aria-describedby="ageHelp">
+          <p class="fine" id="ageHelp">Mueve la barra. Esquema orientativo: tu veterinario define el calendario exacto.</p>
+        </div>
+        <div class="timeline" id="timeline"><span class="fill" id="tlFill"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="citas" style="background: var(--bg-2)">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Citas en línea</p>
+        <h2>Agenda en<br>tres toques.</h2>
+      </div>
+      <div class="book">
+        <div class="panel">
+          <div><h3>1. ¿Qué necesita?</h3>
+            <div class="chips" id="bkService" style="margin-top:10px"></div></div>
+          <div><h3>2. Elige el día</h3>
+            <div class="days" id="bkDays" style="margin-top:10px"></div></div>
+          <div><h3>3. Elige la hora</h3>
+            <div class="slots" id="bkSlots" style="margin-top:10px"></div></div>
+        </div>
+        <aside class="ticket" id="ticket" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><h4>Horario</h4><p>Lunes a sábado<br>9:00 a 19:00</p></div>
+    <div><h4>Urgencias</h4><p>Atención las 24 horas<br>por teléfono</p></div>
+    <div><h4>Dónde estamos</h4><p>Mérida, Yucatán<br>(dirección del negocio)</p></div>
+    <p class="legal">Sitio de demostración. Los datos de contacto, horarios y servicios son de ejemplo y se reemplazan con los de tu negocio.</p>
+  </div>
+</footer>
+
+<button class="fab" id="fab" type="button" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg>
+</button>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const toast = (msg) => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 2600); };
+  const ICON = {
+    steth: '<path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M12 15v2a4 4 0 0 0 8 0v-2"/><circle cx="20" cy="13" r="2"/>',
+    syringe: '<path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5"/><path d="m9 11 4 4M5 19l-3 3"/>',
+    scissors: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',
+    heart: '<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+    tooth: '<path d="M7 3c-2 0-4 2-4 5 0 4 2 5 2 9 0 3 2 4 3 4s1-2 2-5c.5-1.5 1-2 2-2s1.5.5 2 2c1 3 1 5 2 5s3-1 3-4c0-4 2-5 2-9 0-3-2-5-4-5-2 0-3 1-5 1S9 3 7 3z"/>',
+    home: '<path d="M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    feather: '<path d="M20.2 12.2a6 6 0 0 0-8.5-8.5L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/>',
+  };
+  const SERVICES = {
+    perro: [['steth', 'Consulta general', 'Revisión completa de nariz a cola, con explicación clara de cada hallazgo.'],
+            ['syringe', 'Vacunas', 'Esquema de cachorro y refuerzos anuales, con recordatorio por WhatsApp.'],
+            ['scissors', 'Estética canina', 'Baño, corte y limpieza de oídos, con productos para piel sensible.'],
+            ['heart', 'Cirugía', 'Esterilización y cirugía general, con monitoreo antes y después.']],
+    gato:  [['steth', 'Consulta felina', 'Citas tranquilas, sin perros en la sala, para reducir el estrés.'],
+            ['syringe', 'Vacunas', 'Triple felina y rabia, en el momento justo para cada etapa.'],
+            ['tooth', 'Limpieza dental', 'Revisión y limpieza para prevenir dolor y mal aliento.'],
+            ['home', 'Hospitalización', 'Espacio separado y silencioso para su recuperación.']],
+    exotico: [['feather', 'Aves', 'Revisión de plumaje, pico y alimentación.'],
+              ['steth', 'Conejos y roedores', 'Consulta, dientes y dieta especializada.'],
+              ['heart', 'Reptiles', 'Control de temperatura, piel y nutrición.'],
+              ['syringe', 'Medicina preventiva', 'Plan de revisiones según la especie.']],
+  };
+
+  /* ---------- mascota del hero ---------- */
+  const pet = $('#pet'), pupils = pet.querySelectorAll('.pupil'), stage = $('#petStage');
+  const look = (x, y) => {
+    const r = pet.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height * 0.47;
+    const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1, m = Math.min(6, d / 30);
+    pupils.forEach(p => p.style.transform = `translate(${dx / d * m}px, ${dy / d * m}px)`);
+  };
+  addEventListener('pointermove', e => look(e.clientX, e.clientY), { passive: true });
+  const blink = () => { pet.classList.remove('blink'); void pet.offsetWidth; pet.classList.add('blink'); };
+  if (!reduce) setInterval(blink, 3800);
+  pet.addEventListener('click', e => {
+    pet.classList.remove('happy'); void pet.offsetWidth; pet.classList.add('happy');
+    const s = stage.getBoundingClientRect();
+    const h = document.createElement('span'); h.className = 'heart'; h.textContent = '♥';
+    h.style.left = (e.clientX - s.left) + 'px'; h.style.top = (e.clientY - s.top - 20) + 'px';
+    stage.appendChild(h); setTimeout(() => h.remove(), 1200);
+  });
+  const knob = $('#knob'), bDog = $('#petDog'), bCat = $('#petCat');
+  const placeKnob = (b) => { knob.style.width = b.offsetWidth + 'px'; knob.style.transform = `translateX(${b.offsetLeft - 4}px)`; };
+  const setPet = (cat) => {
+    pet.classList.toggle('is-cat', cat);
+    bDog.setAttribute('aria-pressed', !cat); bCat.setAttribute('aria-pressed', cat);
+    placeKnob(cat ? bCat : bDog); blink();
+    pickServices(cat ? 'gato' : 'perro', false);
+    pickVac(cat ? 'gato' : 'perro');
+  };
+  bDog.onclick = () => setPet(false); bCat.onclick = () => setPet(true);
+  addEventListener('resize', () => placeKnob(pet.classList.contains('is-cat') ? bCat : bDog));
+  requestAnimationFrame(() => placeKnob(bDog));
+
+  /* ---------- frase que se ilumina ---------- */
+  const rt = $('#revealText');
+  const destacadas = new Set(['nombre.']);
+  rt.innerHTML = rt.textContent.split(' ').map(w => `<span class="w${destacadas.has(w) ? ' hl' : ''}">${w}</span>`).join(' ');
+  const words = [...rt.querySelectorAll('.w')];
+  const onScroll = () => {
+    const r = rt.getBoundingClientRect(), vh = innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.55 + r.height * 0.5)));
+    const n = Math.round(p * words.length);
+    words.forEach((w, i) => w.classList.toggle('on', i < n));
+  };
+  if (reduce) words.forEach(w => w.classList.add('on'));
+  else { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
+
+  /* ---------- servicios ---------- */
+  const svcBox = $('#services');
+  function pickServices(k, anim = true) {
+    document.querySelectorAll('#servicios .seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k));
+    svcBox.innerHTML = SERVICES[k].map(([ic, t, d]) =>
+      `<article class="svc"><div class="ic"><svg viewBox="0 0 24 24">${ICON[ic]}</svg></div><h3>${t}</h3><p>${d}</p></article>`).join('');
+    if (anim) { svcBox.classList.remove('swap'); void svcBox.offsetWidth; svcBox.classList.add('swap'); }
+  }
+  document.querySelectorAll('#servicios .seg button').forEach(b => b.onclick = () => pickServices(b.dataset.k));
+  pickServices('perro', false);
+
+  /* ---------- urgencia ---------- */
+  const SYM = [
+    ['Le cuesta respirar', 3], ['Convulsiones', 3], ['Comió algo tóxico', 3], ['Sangrado que no para', 3],
+    ['Lo atropellaron o se cayó', 3], ['No puede orinar', 3], ['Vómito o diarrea repetidos', 2], ['No come desde ayer', 2],
+    ['Cojea', 1], ['Comezón o se rasca', 1], ['Toca vacuna', 0], ['Revisión general', 0],
+  ];
+  const symBox = $('#symptoms'), verdict = $('#verdict');
+  symBox.innerHTML = SYM.map(([t], i) => `<button type="button" class="chip" data-i="${i}" aria-pressed="false">${t}</button>`).join('');
+  const evalSym = () => {
+    const sel = [...symBox.querySelectorAll('[aria-pressed="true"]')].map(b => SYM[b.dataset.i][1]);
+    const max = sel.length ? Math.max(...sel) : -1;
+    verdict.className = 'verdict' + (max === 3 ? ' urgent' : max >= 0 ? ' ok' : '');
+    verdict.innerHTML = max === 3
+      ? '<strong><span class="pulse"></span>Ven de inmediato</strong><span>Puede ser una urgencia. Llámanos en camino para tener todo listo cuando llegues.</span>'
+      : max === 2 ? '<strong>Agenda hoy mismo</strong><span>Conviene revisarlo en las próximas horas. Si empeora, trátalo como urgencia.</span>'
+      : max >= 0 ? '<strong>Agenda una cita</strong><span>No parece urgente. Elige el día y la hora que te acomoden más abajo.</span>'
+      : '<strong>Elige uno o más síntomas</strong><span>Te orientamos en segundos sobre si conviene venir de inmediato o agendar una cita.</span>';
+  };
+  symBox.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); evalSym();
+  });
+
+  /* ---------- vacunas (orientativo) ---------- */
+  const VAC = {
+    perro: [[6, 8, 'Primera vacuna', 'Moquillo y parvovirus · 6 a 8 semanas'], [10, 12, 'Refuerzo', 'Vacuna múltiple · 10 a 12 semanas'],
+            [14, 16, 'Refuerzo y rabia', 'Múltiple + antirrábica · 14 a 16 semanas'], [52, 56, 'Refuerzo anual', 'Al año de edad y cada año']],
+    gato:  [[8, 9, 'Primera vacuna', 'Triple felina · 8 a 9 semanas'], [12, 13, 'Refuerzo', 'Triple felina · 12 semanas'],
+            [16, 17, 'Rabia', 'Antirrábica · 16 semanas'], [52, 56, 'Refuerzo anual', 'Al año de edad y cada año']],
+  };
+  let vacK = 'perro';
+  const tl = $('#timeline'), range = $('#ageRange');
+  function pickVac(k) {
+    vacK = k;
+    document.querySelectorAll('#vacunas .seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === k));
+    renderVac();
+  }
+  function renderVac() {
+    const age = +range.value; $('#ageVal').textContent = age;
+    const steps = VAC[vacK];
+    const nextI = steps.findIndex(s => age < s[1]);
+    tl.innerHTML = '<span class="fill" id="tlFill"></span>' + steps.map(([a, b, t, d], i) => {
+      const st = i < (nextI === -1 ? steps.length : nextI) ? 'done' : i === nextI ? 'next' : '';
+      return `<div class="step ${st}"><h4>${t}${st === 'next' ? '<span class="tag-next">' + (age >= a ? 'Le toca ahora' : 'Siguiente') + '</span>' : ''}</h4><span>${d}</span></div>`;
+    }).join('');
+    const items = tl.querySelectorAll('.step'), upto = nextI === -1 ? items.length - 1 : nextI;
+    requestAnimationFrame(() => { const el = items[upto]; $('#tlFill').style.height = (el.offsetTop + 22 - 8) + 'px'; });
+  }
+  document.querySelectorAll('#vacunas .seg button').forEach(b => b.onclick = () => pickVac(b.dataset.v));
+  range.addEventListener('input', renderVac);
+  renderVac();
+
+  /* ---------- citas ---------- */
+  const BK = { svc: 'Consulta general', day: null, slot: null };
+  const svcs = ['Consulta general', 'Vacuna', 'Estética', 'Revisión de cirugía'];
+  $('#bkService').innerHTML = svcs.map(s => `<button type="button" class="chip" aria-pressed="${s === BK.svc}">${s}</button>`).join('');
+  $('#bkService').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    $('#bkService').querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b)); BK.svc = b.textContent; renderTicket();
+  });
+  const dias = [];
+  for (let d = new Date(), i = 0; dias.length < 8; i++) {
+    const x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
+    if (x.getDay() !== 0) dias.push(x);
+  }
+  const fmtD = (x, o) => x.toLocaleDateString('es-MX', o);
+  $('#bkDays').innerHTML = dias.map((x, i) =>
+    `<button type="button" class="day" data-i="${i}" aria-pressed="${i === 0}"><small>${fmtD(x, { weekday: 'short' }).replace('.', '')}</small><b>${x.getDate()}</b><small>${fmtD(x, { month: 'short' }).replace('.', '')}</small></button>`).join('');
+  BK.day = 0;
+  const horas = ['9:00', '10:00', '11:00', '12:00', '13:00', '16:00', '17:00', '18:00'];
+  const renderSlots = () => {
+    const seed = dias[BK.day].getDate();
+    $('#bkSlots').innerHTML = horas.map((h, i) => {
+      const ocupado = (seed * 7 + i * 3) % 5 === 0;
+      return `<button type="button" class="slot" ${ocupado ? 'disabled aria-label="' + h + ' ocupado"' : ''} aria-pressed="${BK.slot === h}">${h}</button>`;
+    }).join('');
+  };
+  $('#bkDays').addEventListener('click', e => {
+    const b = e.target.closest('.day'); if (!b) return;
+    $('#bkDays').querySelectorAll('.day').forEach(c => c.setAttribute('aria-pressed', c === b));
+    BK.day = +b.dataset.i; BK.slot = null; renderSlots(); renderTicket();
+  });
+  $('#bkSlots').addEventListener('click', e => {
+    const b = e.target.closest('.slot'); if (!b || b.disabled) return;
+    BK.slot = b.textContent; renderSlots(); renderTicket();
+  });
+  function renderTicket(done = false) {
+    const x = dias[BK.day];
+    if (done) {
+      $('#ticket').innerHTML = `<div class="done-card"><svg class="check" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"/><path d="M26 41 l10 10 l19 -21"/></svg>
+        <h3 style="font-family:var(--display);font-size:26px;color:inherit">Cita apartada</h3>
+        <p style="opacity:.75">${BK.svc} · ${fmtD(x, { weekday: 'long', day: 'numeric', month: 'long' })} · ${BK.slot}</p>
+        <p style="opacity:.6;font-size:13px">En tu página real, aquí se envía la confirmación por WhatsApp al negocio.</p>
+        <button class="btn btn-sm" type="button" id="again" style="background:transparent;color:inherit;border:1.5px solid currentColor">Agendar otra</button></div>`;
+      $('#again').onclick = () => { BK.slot = null; renderSlots(); renderTicket(); };
+      return;
+    }
+    $('#ticket').innerHTML = `<h3 style="font-family:var(--display);font-size:24px;color:inherit;letter-spacing:-.02em">Tu cita</h3>
+      <div class="row"><span>Servicio</span><span>${BK.svc}</span></div>
+      <div class="row"><span>Día</span><span>${fmtD(x, { weekday: 'long', day: 'numeric', month: 'short' })}</span></div>
+      <div class="row"><span>Hora</span><span>${BK.slot || 'Elige una hora'}</span></div>
+      <button class="btn" type="button" id="confirm" ${BK.slot ? '' : 'disabled'}>Confirmar cita</button>`;
+    $('#confirm').onclick = () => renderTicket(true);
+  }
+  renderSlots(); renderTicket();
+
+  $('#fab').onclick = () => toast('En tu página, este botón abre el WhatsApp de tu negocio.');
+})();
+</script>

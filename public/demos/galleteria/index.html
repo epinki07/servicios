@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="es-MX" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Atelier Galleta (@ateliergalleta) — Alta Repostería Recién Horneada en Mérida, Yucatán</title>
+  <meta name="description" content="Galletas estilo New York recién horneadas en Mérida, Yucatán. Arma tu Box personalizada de 4, 6 o 12 galletas (Dubái Ki'Xocolatl, Lotus, Queso de Bola con Nutella) y agenda por WhatsApp en nuestras 3 sucursales." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#110D0B" />
+  <link rel="canonical" href="https://ateliergalleta.mx/" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content="Atelier Galleta (@ateliergalleta) — Recién Horneadas en Mérida" />
+  <meta property="og:description" content="180g de ingeniería repostera con centro fundido. Configura tu Box de regalo y agenda la hora exacta de salida del horno por WhatsApp." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=80&fm=webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon SVG en línea (Cero peticiones adicionales) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23110D0B'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='%23C89D66' font-family='Georgia, serif' font-weight='bold' font-size='24'%3EDR%3C/text%3E%3C/svg%3E" />
+
+  <!-- Preconexiones críticas para LCP y Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP 3.12.5 + ScrollTrigger (Defer para no bloquear el renderizado inicial) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif']
+          },
+          colors: {
+            canvas: {
+              light: '#F6F3EC',
+              warm: '#EBE5D8',
+              dark: '#110D0B',
+              cacao: '#1C130E',
+              velvet: '#240B0E'
+            },
+            accent: {
+              gold: '#C89D66',
+              rust: '#9E3B24'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Datos Estructurados SEO Local (Mérida, Yucatán) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Atelier Galleta (@ateliergalleta)",
+    "description": "Alta repostería de galletas rellenas recién horneadas en Mérida, Yucatán.",
+    "url": "#",
+    "telephone": "+52-999-256-5297",
+    "priceRange": "$$",
+    "ServesCuisine": "Artisanal Cookies & Bakery",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mérida",
+      "addressRegion": "Yucatán",
+      "addressCountry": "MX"
+    },
+    "sameAs": [
+      "#"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-current: #F6F3EC;
+      --text-current: #110D0B;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+      background-color: var(--bg-current);
+      color: var(--text-current);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::selection {
+      background-color: #110D0B;
+      color: #F6F3EC;
+    }
+
+    /* Textura sutil editorial */
+    .editorial-grain {
+      background-image: radial-gradient(rgba(17, 13, 11, 0.04) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Escalas tipográficas calibradas desde 320px hasta 1920px */
+    .display-hero {
+      font-size: clamp(2.45rem, 7.8vw, 8.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .display-section {
+      font-size: clamp(2rem, 5.4vw, 5.2rem);
+      line-height: 1.0;
+      letter-spacing: -0.035em;
+    }
+
+    /* Alturas estables para Safari iOS */
+    .viewport-locked {
+      height: 100vh;
+      height: 100svh;
+    }
+
+    .min-viewport-safe {
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+
+    /* Recorte circular y profundidad volumétrica */
+    .cookie-specimen {
+      border-radius: 50%;
+      box-shadow: 0 32px 75px -12px rgba(0, 0, 0, 0.48);
+    }
+
+    /* Hemisferios para Deconstrucción (Exploded View) */
+    .hemisphere-left {
+      clip-path: polygon(0 0, 50.5% 0, 50.5% 100%, 0 100%);
+    }
+    .hemisphere-right {
+      clip-path: polygon(49.5% 0, 100% 0, 100% 100%, 49.5% 100%);
+    }
+
+    /* Cota técnica de ingeniería repostera */
+    .spec-line {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(200,157,102,0.85), rgba(200,157,102,0.12));
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Inputs accesibles y limpios */
+    .minimal-input {
+      background: transparent;
+      border-bottom: 1px solid rgba(17, 13, 11, 0.25);
+      border-radius: 0;
+      transition: border-color 0.25s ease;
+    }
+    .minimal-input:focus {
+      outline: none;
+      border-bottom-color: #110D0B;
+    }
+
+    /* Focus visible accesible para teclado */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid #C89D66;
+      outline-offset: 3px;
+    }
+
+    /* Escenario 3D interactivo en sección Conoces */
+    .stage-3d-wrapper {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    .cookie-3d-layer {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .cookie-3d-depth {
+      transform: translateZ(-18px) scale(0.97);
+      filter: brightness(0.45);
+    }
+
+    /* Botón flotante de WhatsApp siempre presente del lado derecho */
+    .whatsapp-float {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom, 20px));
+      right: 20px;
+      z-index: 90;
+      background-color: #25D366;
+      color: #FFFFFF;
+      height: 56px;
+      padding: 0 18px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 14px 34px rgba(37, 211, 102, 0.38);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.03);
+      background-color: #1ebe5d;
+    }
+    .whatsapp-float:active {
+      transform: scale(0.97);
+    }
+
+    /* Soporte estricto para usuarios que prefieren movimiento reducido */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reduced-motion-visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="editorial-grain"><a href="/servicios/" style="position:fixed;left:16px;bottom:16px;z-index:9999;background:rgba(17,13,11,.85);color:#F6F3EC;font:600 11px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.04em;padding:10px 14px;border-radius:999px;border:1px solid rgba(200,157,102,.4);text-decoration:none;backdrop-filter:blur(8px)">DEMO · negocio ficticio · ← Diego Ramírez</a>
+
+  <!-- Enlace de salto directo para accesibilidad por teclado -->
+  <a href="#atelier-box" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#110D0B] focus:text-[#F6F3EC] focus:px-4 focus:py-2 focus:text-xs">
+    Saltar directo al configurador de Box
+  </a>
+
+  <!-- =================================================================== -->
+  <!-- NAVEGACIÓN AUTO-HIDE (Se oculta por completo al bajar en scroll)    -->
+  <!-- =================================================================== -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-[#110D0B]/90 backdrop-blur-md text-[#F6F3EC] border-b border-white/10 transition-transform duration-300 will-change-transform">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 h-16 md:h-20 flex items-center justify-between gap-4">
+      
+      <a href="#hero-section" class="text-xs sm:text-sm tracking-[0.2em] uppercase font-bold flex items-center gap-1.5 shrink-0 py-2">
+        <span>Atelier Galleta</span>
+        <span class="font-serif italic font-normal tracking-normal text-sm sm:text-base text-[#C89D66]">@ateliergalleta</span>
+        
+      </a>
+
+      <!-- Navegación Desktop -->
+      <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-8 text-xs tracking-[0.16em] uppercase font-medium">
+        <a href="#anatomia" class="py-2 hover:text-[#C89D66] transition-colors">Anatomía</a>
+        <a href="#coleccion" class="py-2 hover:text-[#C89D66] transition-colors">Sabores</a>
+        <a href="#conoces" class="py-2 hover:text-[#C89D66] transition-colors">¿Conoces? 3D</a>
+        <a href="#textura" class="py-2 hover:text-[#C89D66] transition-colors">Textura</a>
+        <a href="#sucursales" class="py-2 hover:text-[#C89D66] transition-colors">3 sucursales</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#atelier-box" class="text-[11px] sm:text-xs tracking-[0.14em] uppercase font-semibold bg-[#F6F3EC] text-[#110D0B] px-3.5 sm:px-5 py-2.5 hover:bg-[#C89D66] hover:text-[#110D0B] transition-colors flex items-center gap-1.5">
+          <span>Armar Box</span>
+          <span id="nav-box-counter" class="font-serif italic font-bold text-xs sm:text-sm">(2/4)</span>
+        </a>
+
+        <!-- Botón Menú Móvil (44x44px mínimo táctil) -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          onclick="toggleMobileMenu()"
+          aria-expanded="false"
+          aria-controls="mobile-menu-drawer"
+          aria-label="Abrir menú de navegación"
+          class="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 border border-white/20 text-[#F6F3EC]"
+        >
+          <span id="burger-line-1" class="w-5 h-0.5 bg-current transition-transform duration-300"></span>
+          <span id="burger-line-2" class="w-5 h-0.5 bg-current transition-transform duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Drawer de Navegación Móvil -->
+    <nav
+      id="mobile-menu-drawer"
+      aria-label="Menú móvil"
+      class="lg:hidden hidden bg-[#110D0B] border-b border-white/15 px-6 py-6 space-y-4 text-sm tracking-[0.18em] uppercase font-semibold"
+    >
+      <a href="#anatomia" onclick="closeMobileMenu()" class="block py-2.5 border-b border-white/10">01 · Anatomía Interior</a>
+      <a href="#coleccion" onclick="closeMobileMenu()" class="block py-2.5 border-b border-white/10">02 · Escenas de Sabor</a>
+      <a href="#conoces" onclick="closeMobileMenu()" class="block py-2.5 border-b border-white/10 text-[#C89D66]">03 · ¿Conoces? Explorador 3D</a>
+      <a href="#textura" onclick="closeMobileMenu()" class="block py-2.5 border-b border-white/10">04 · Estudio de Textura</a>
+      <a href="#sucursales" onclick="closeMobileMenu()" class="block py-2.5 border-b border-white/10">05 · 3 sucursales Mérida</a>
+      <a href="#atelier-box" onclick="closeMobileMenu()" class="block py-2.5 text-[#C89D66]">06 · Configurar y Agendar Box →</a>
+    </nav>
+  </header>
+
+  <!-- =================================================================== -->
+  <!-- NOTIFICACIÓN TOAST NO BLOQUEANTE (Reemplaza window.alert)           -->
+  <!-- =================================================================== -->
+  <div
+    id="ui-toast"
+    role="status"
+    aria-live="polite"
+    class="fixed top-20 left-1/2 -translate-x-1/2 z-[95] bg-[#110D0B] text-[#F6F3EC] border border-[#C89D66]/50 px-5 py-3 text-xs tracking-[0.1em] uppercase font-semibold shadow-2xl opacity-0 pointer-events-none transition-all duration-300 max-w-[92vw] text-center"
+  >
+    Notificación
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- BOTÓN FLOTANTE DE WHATSAPP SIEMPRE PRESENTE (LADO DERECHO)          -->
+  <!-- =================================================================== -->
+  <button
+    type="button"
+    onclick="triggerQuickWhatsApp()"
+    class="whatsapp-float"
+    aria-label="Enviar pedido o mensaje directo por WhatsApp a Atelier Galleta"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+    <span class="text-xs font-extrabold tracking-wider uppercase hidden sm:inline">WhatsApp Atelier</span>
+    <span id="wa-float-badge" class="bg-[#110D0B] text-[#F6F3EC] text-[11px] font-bold px-2 py-0.5 rounded-full">2/4</span>
+  </button>
+
+  <main>
+    <!-- ================================================================= -->
+    <!-- 1. HERO CINEMATOGRÁFICO                                           -->
+    <!-- ================================================================= -->
+    <section id="hero-section" class="relative min-viewport-safe w-full flex flex-col justify-between pt-24 md:pt-32 pb-10 px-5 sm:px-8 md:px-12 overflow-hidden">
+      <div class="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 items-center flex-1 gap-8 md:gap-12 my-auto">
+        
+        <div class="lg:col-span-7 z-10 order-2 lg:order-1" id="hero-copy">
+          <div class="inline-flex flex-wrap items-center gap-2 mb-4 md:mb-6 text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-600 font-semibold">
+            <span>Instagram Oficial @ateliergalleta</span>
+            <span class="inline-flex items-center justify-center px-1.5 py-0.5 bg-sky-600 text-white text-[9px] rounded font-bold"></span>
+            <span>· 3 sucursales en Yucatán</span>
+          </div>
+
+          <h1 class="display-hero font-extrabold tracking-tight text-[#110D0B]">
+            Recién salidas<br />
+            <span class="font-serif italic font-normal text-[#6E473B]">del horno.</span>
+          </h1>
+
+          <p class="mt-5 md:mt-8 text-sm sm:text-base md:text-lg text-neutral-600 max-w-lg font-normal leading-relaxed">
+            Galletas artesanales de 180 gramos horneadas al momento en Mérida. Corteza dorada y corazón líquido de pistache con kataifi, Lotus Biscoff, Ferrero o Queso de Bola con Nutella.
+          </p>
+
+          <div class="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+            <a href="#atelier-box" class="inline-flex items-center justify-center gap-4 bg-[#110D0B] text-[#F6F3EC] px-7 py-4 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#2c221E] transition-colors min-h-[48px]">
+              <span>Personalizar mi Box</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#conoces" class="inline-flex items-center justify-center sm:justify-start gap-2 py-3 text-xs uppercase tracking-[0.18em] text-[#110D0B] font-semibold border-b border-black/30 hover:border-black transition-colors min-h-[48px]">
+              <span>Explorar Galletas en 3D</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex items-center justify-center relative order-1 lg:order-2 mt-4 lg:mt-0">
+          <div id="hero-cookie-wrap" class="relative w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px]">
+            <img
+              id="hero-cookie-img"
+              src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1000&q=85&fm=webp"
+              srcset="
+                https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=500&q=80&fm=webp 500w,
+                https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=85&fm=webp 900w,
+                https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=85&fm=webp 1200w
+              "
+              sizes="(max-width: 640px) 220px, (max-width: 1024px) 380px, 450px"
+              width="450"
+              height="450"
+              fetchpriority="high"
+              alt="Galleta Atelier recién horneada con chispas de chocolate semiamargo"
+              class="w-full h-full object-cover cookie-specimen"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="max-w-[1440px] w-full mx-auto flex flex-wrap justify-between items-end gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-neutral-500 border-t border-black/10 pt-4 mt-8">
+        <span>01 / @ateliergalleta · Mérida, Yucatán</span>
+        <span>Desliza para deconstruir ↓</span>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 2. EXPERIENCIA DE PRODUCTO (DECONSTRUCCIÓN CONTROLADA POR SCROLL) -->
+    <!-- ================================================================= -->
+    <section id="anatomia" class="relative viewport-locked w-full bg-[#110D0B] text-[#F6F3EC] overflow-hidden flex flex-col justify-between py-6 sm:py-12 px-5 sm:px-8 md:px-12">
+      
+      <!-- Resplandor térmico del núcleo -->
+      <div
+        id="core-thermal-glow"
+        class="reduced-motion-visible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] md:w-[500px] md:h-[500px] rounded-full pointer-events-none opacity-0"
+        style="background: radial-gradient(circle, rgba(200,157,102,0.4) 0%, rgba(158,59,36,0.16) 48%, transparent 72%); filter: blur(36px);"
+      ></div>
+
+      <!-- Cabecera de Escena -->
+      <div class="max-w-[1440px] w-full mx-auto flex justify-between items-start z-20 pt-2">
+        <div>
+          <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] text-[#C89D66] block mb-1">02 / Anatomía Interior</span>
+          <h2 class="text-xl sm:text-3xl md:text-4xl font-light tracking-tight">
+            Ingeniería en estado líquido.
+          </h2>
+        </div>
+        <span class="font-serif italic text-base sm:text-xl md:text-2xl text-white/60 shrink-0">180g · 210°C</span>
+      </div>
+
+      <!-- Escenario Central de División Física -->
+      <div class="relative w-full max-w-[1280px] mx-auto my-auto flex items-center justify-center py-4">
+
+        <!-- Núcleo Fundido Central -->
+        <div
+          id="molten-core-center"
+          class="reduced-motion-visible absolute z-10 w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full opacity-0 scale-50 flex flex-col items-center justify-center text-center p-3"
+          style="background: radial-gradient(circle, #6E3B1E 0%, #2A1408 75%); box-shadow: 0 0 70px rgba(200,157,102,0.45);"
+        >
+          <span class="font-serif italic text-amber-200 text-sm sm:text-lg md:text-xl">Corazón Fundido</span>
+          <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/70 mt-1">Pistache · Nutella · Lotus</span>
+        </div>
+
+        <!-- Galleta dividida en 2 hemisferios -->
+        <div id="exploded-cookie-stage" class="relative w-[190px] h-[190px] sm:w-[270px] sm:h-[270px] md:w-[380px] md:h-[380px] z-20">
+          <img
+            id="cookie-half-left"
+            src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=900&q=80&fm=webp"
+            width="380"
+            height="380"
+            alt="Hemisferio izquierdo de Galleta Dubái Atelier"
+            class="absolute inset-0 w-full h-full object-cover rounded-full hemisphere-left"
+          />
+          <img
+            id="cookie-half-right"
+            src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=900&q=80&fm=webp"
+            width="380"
+            height="380"
+            alt="Hemisferio derecho de Galleta Dubái Atelier"
+            class="absolute inset-0 w-full h-full object-cover rounded-full hemisphere-right"
+          />
+        </div>
+
+        <!-- Nodos de ingredientes Desktop/Tablet (Flotantes alrededor) -->
+        <div id="spec-node-1" class="reduced-motion-visible hidden md:block absolute left-4 lg:left-12 top-6 max-w-[240px] opacity-0 z-30">
+          <span class="text-[10px] uppercase tracking-[0.24em] text-[#C89D66] block mb-1">01 · Cacao Yucateco</span>
+          <div class="spec-line w-full mb-2"></div>
+          <h3 class="text-sm lg:text-base font-semibold">Trozos Ki'Xocolatl 54%</h3>
+          <p class="text-xs text-white/65 leading-relaxed mt-1">Chocolate semiamargo local que conserva notas tostadas al fundirse.</p>
+        </div>
+
+        <div id="spec-node-2" class="reduced-motion-visible hidden md:block absolute right-4 lg:right-12 top-6 max-w-[240px] opacity-0 z-30 text-right">
+          <span class="text-[10px] uppercase tracking-[0.24em] text-[#C89D66] block mb-1">02 · Corteza Dorada</span>
+          <div class="spec-line w-full mb-2"></div>
+          <h3 class="text-sm lg:text-base font-semibold">Mantequilla Pura & Reposo</h3>
+          <p class="text-xs text-white/65 leading-relaxed mt-1">Sellado exterior crujiente con miga húmeda estilo <em>fudge</em>.</p>
+        </div>
+
+        <div id="spec-node-3" class="reduced-motion-visible hidden md:block absolute left-6 lg:left-16 bottom-6 max-w-[250px] opacity-0 z-30">
+          <div class="spec-line w-full mb-2"></div>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-[#C89D66] block">03 · Inyección Central</span>
+          <h3 class="text-sm lg:text-base font-semibold mt-0.5">45g de Relleno Real</h3>
+          <p class="text-xs text-white/65 leading-relaxed mt-1">Kataifi crujiente con pistache, Nutella, Lotus o Queso de Bola Edam.</p>
+        </div>
+
+        <div id="spec-node-4" class="reduced-motion-visible hidden md:block absolute right-6 lg:right-16 bottom-6 max-w-[250px] opacity-0 z-30 text-right">
+          <div class="spec-line w-full mb-2"></div>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-[#C89D66] block">04 · Contraste Térmico</span>
+          <h3 class="text-sm lg:text-base font-semibold mt-0.5">Servida Caliente + Helado</h3>
+          <p class="text-xs text-white/65 leading-relaxed mt-1">Recién salida del horno, lista para coronarse con helado en sucursal.</p>
+        </div>
+      </div>
+
+      <!-- Tarjetas Compactas de Ingredientes para Celular (320px-767px: Cero colisión) -->
+      <div id="mobile-specs-grid" class="reduced-motion-visible md:hidden grid grid-cols-2 gap-2.5 z-30 opacity-0">
+        <div class="bg-white/5 border border-white/10 p-3">
+          <span class="text-[9px] uppercase tracking-[0.18em] text-[#C89D66] block">01 · Cacao Local</span>
+          <p class="text-xs font-bold mt-0.5">Ki'Xocolatl 54%</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-3">
+          <span class="text-[9px] uppercase tracking-[0.18em] text-[#C89D66] block">02 · Corteza</span>
+          <p class="text-xs font-bold mt-0.5">100% Mantequilla</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-3">
+          <span class="text-[9px] uppercase tracking-[0.18em] text-[#C89D66] block">03 · Corazón</span>
+          <p class="text-xs font-bold mt-0.5">45g Relleno Fundido</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-3">
+          <span class="text-[9px] uppercase tracking-[0.18em] text-[#C89D66] block">04 · Experiencia</span>
+          <p class="text-xs font-bold mt-0.5">Caliente + Helado</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 3. ESCENAS CINEMATOGRÁFICAS DE SABOR                              -->
+    <!-- ================================================================= -->
+    <section id="coleccion" aria-label="Sabores insignia" class="relative w-full bg-[#131914] text-[#F6F3EC] transition-colors duration-700">
+      
+      <!-- ESCENA I: DUBÁI -->
+      <article class="flavor-scene min-viewport-safe w-full flex items-center py-20 px-5 sm:px-8 md:px-12" data-bg="#131914" data-text="#F6F3EC">
+        <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+          <div class="lg:col-span-6 order-2 lg:order-1 flavor-text-block">
+            <span class="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#95B89C]">Escena I — El Fenómeno de Mérida</span>
+            <h3 class="display-section font-extrabold mt-2">Galleta de Dubái.</h3>
+            <p class="mt-5 text-sm sm:text-base md:text-lg opacity-80 max-w-lg leading-relaxed">
+              Masa intensa de brownie rellena de pasta kataifi crujiente y crema de pistache real, coronada con chocolate semiamargo yucateco <em>Ki'Xocolatl</em>.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-white/15 pt-6">
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 block">Precio Sucursal</span>
+                <span class="text-2xl font-bold">$81 MXN</span>
+              </div>
+              <button type="button" onclick="quickAddFromScene('dubai')" class="px-6 py-3.5 border border-white/40 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white hover:text-black transition-colors min-h-[48px]">
+                + Integrar a mi Box
+              </button>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 flex justify-center flavor-cookie-right">
+            <img
+              src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=900&q=80&fm=webp"
+              loading="lazy"
+              decoding="async"
+              width="440"
+              height="440"
+              alt="Galleta de Dubái rellena de pistache y kataifi"
+              class="w-[230px] h-[230px] sm:w-[330px] sm:h-[330px] md:w-[430px] md:h-[430px] object-cover cookie-specimen"
+            />
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA II: LOTUS -->
+      <article class="flavor-scene min-viewport-safe w-full flex items-center py-20 px-5 sm:px-8 md:px-12" data-bg="#23150E" data-text="#F6F3EC">
+        <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+          <div class="lg:col-span-6 flex justify-center flavor-cookie-left">
+            <img
+              src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=900&q=80&fm=webp"
+              loading="lazy"
+              decoding="async"
+              width="440"
+              height="440"
+              alt="Galleta Lotus con Chocolate Blanco"
+              class="w-[230px] h-[230px] sm:w-[330px] sm:h-[330px] md:w-[430px] md:h-[430px] object-cover cookie-specimen"
+            />
+          </div>
+          <div class="lg:col-span-6 flavor-text-block">
+            <span class="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#E0A96D]">Escena II — Caramelo Especiado</span>
+            <h3 class="display-section font-extrabold mt-2">Lotus & Blanco.</h3>
+            <p class="mt-5 text-sm sm:text-base md:text-lg opacity-80 max-w-lg leading-relaxed">
+              Corazón denso de crema Lotus Biscoff derretida, chispas de chocolate blanco caramelizado y galleta Lotus entera en la corona.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-white/15 pt-6">
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 block">Precio Sucursal</span>
+                <span class="text-2xl font-bold">$87 MXN</span>
+              </div>
+              <button type="button" onclick="quickAddFromScene('lotus')" class="px-6 py-3.5 border border-white/40 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white hover:text-black transition-colors min-h-[48px]">
+                + Integrar a mi Box
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA III: QUESO DE BOLA Y NUTELLA -->
+      <article class="flavor-scene min-viewport-safe w-full flex items-center py-20 px-5 sm:px-8 md:px-12" data-bg="#F4EFE6" data-text="#110D0B">
+        <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+          <div class="lg:col-span-6 order-2 lg:order-1 flavor-text-block">
+            <span class="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#9E3B24]">Escena III — Orgullo Yucateco</span>
+            <h3 class="display-section font-extrabold mt-2">Queso de Bola & Nutella.</h3>
+            <p class="mt-5 text-sm sm:text-base md:text-lg opacity-80 max-w-lg leading-relaxed">
+              El contraste salado-dulce favorito de casa: queso de bola Edam holandés rallado sobre masa tibia de vainilla y un núcleo generoso de Nutella.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-current/15 pt-6">
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 block">Precio Sucursal</span>
+                <span class="text-2xl font-bold">$74 MXN</span>
+              </div>
+              <button type="button" onclick="quickAddFromScene('queso-bola')" class="px-6 py-3.5 border border-current text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#110D0B] hover:text-[#F6F3EC] transition-colors min-h-[48px]">
+                + Integrar a mi Box
+              </button>
+            </div>
+          </div>
+          <div class="lg:col-span-6 order-1 lg:order-2 flex justify-center flavor-cookie-right">
+            <img
+              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80&fm=webp"
+              loading="lazy"
+              decoding="async"
+              width="440"
+              height="440"
+              alt="Galleta de Queso de Bola con Nutella"
+              class="w-[230px] h-[230px] sm:w-[330px] sm:h-[330px] md:w-[430px] md:h-[430px] object-cover cookie-specimen"
+            />
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA IV: RED VELVET -->
+      <article class="flavor-scene min-viewport-safe w-full flex items-center py-20 px-5 sm:px-8 md:px-12" data-bg="#240B0E" data-text="#F6F3EC">
+        <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+          <div class="lg:col-span-6 flex justify-center flavor-cookie-left">
+            <img
+              src="https://images.unsplash.com/photo-1607920592519-bab2a80efd55?auto=format&fit=crop&w=900&q=80&fm=webp"
+              loading="lazy"
+              decoding="async"
+              width="440"
+              height="440"
+              alt="Galleta Red Velvet con chocolate blanco"
+              class="w-[230px] h-[230px] sm:w-[330px] sm:h-[330px] md:w-[430px] md:h-[430px] object-cover cookie-specimen"
+            />
+          </div>
+          <div class="lg:col-span-6 flavor-text-block">
+            <span class="font-serif italic text-xl sm:text-2xl md:text-3xl text-rose-300">Escena IV — Terciopelo Rojo</span>
+            <h3 class="display-section font-extrabold mt-2">Red Velvet.</h3>
+            <p class="mt-5 text-sm sm:text-base md:text-lg opacity-80 max-w-lg leading-relaxed">
+              Miga suave de cacao rojo horneada al punto exacto de humedad, contrastada con chispas fundentes de chocolate blanco belga.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-white/15 pt-6">
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 block">Precio Sucursal</span>
+                <span class="text-2xl font-bold">$68 MXN</span>
+              </div>
+              <button type="button" onclick="quickAddFromScene('red-velvet')" class="px-6 py-3.5 border border-white/40 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white hover:text-black transition-colors min-h-[48px]">
+                + Integrar a mi Box
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 4. SECCIÓN "¿CONOCES?" — INSPECTOR 3D DE LAS 8 GALLETAS           -->
+    <!-- ================================================================= -->
+    <section id="conoces" class="relative min-viewport-safe w-full bg-[#110D0B] text-[#F6F3EC] py-20 md:py-28 px-5 sm:px-8 md:px-12 flex flex-col justify-between overflow-hidden border-t border-white/10">
+      <div class="max-w-[1440px] mx-auto w-full mb-8 md:mb-12">
+        <span class="text-[11px] uppercase tracking-[0.3em] text-[#C89D66] block mb-2">04 / Inspector Tridimensional · @ateliergalleta</span>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="display-section font-extrabold">¿Conoces toda la línea?</h2>
+          <p class="text-white/60 text-xs sm:text-sm max-w-md">
+            Selecciona cualquier galleta del menú oficial o haz scroll para rotarla en 3 ejes como en el estudio principal.
+          </p>
+        </div>
+      </div>
+
+      <!-- En móvil: primero el Escenario 3D arriba y los selectores táctiles debajo -->
+      <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center flex-1">
+        
+        <!-- Lista de Selección (Horizontal deslizable en móvil, vertical en Desktop) -->
+        <div class="lg:col-span-5 order-2 lg:order-1 w-full">
+          <div
+            id="conoces-buttons-list"
+            role="tablist"
+            aria-label="Seleccionar sabor de galleta en 3D"
+            class="flex lg:flex-col gap-2.5 overflow-x-auto no-scrollbar pb-2 lg:pb-0"
+          >
+            <!-- Inyectado por JS -->
+          </div>
+        </div>
+
+        <!-- Escenario 3D con Capas de Volumen, Reflejo Especular y Ficha Activa -->
+        <div class="lg:col-span-7 order-1 lg:order-2 flex flex-col items-center justify-center relative py-4">
+          <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(200,157,102,0.32) 0%, transparent 70%); filter: blur(45px);"></div>
+
+          <!-- Objeto 3D Rotatorio -->
+          <div id="conoces-3d-stage" class="stage-3d-wrapper relative w-[230px] h-[230px] sm:w-[310px] sm:h-[310px] md:w-[370px] md:h-[370px] cursor-grab active:cursor-grabbing">
+            <div id="conoces-3d-rotor" class="cookie-3d-layer w-full h-full relative">
+              <!-- Capa trasera para grosor 3D -->
+              <img
+                id="conoces-img-back"
+                src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=800&q=80&fm=webp"
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover cookie-specimen cookie-3d-depth pointer-events-none"
+              />
+              <!-- Superficie frontal con brillo especular -->
+              <div class="relative w-full h-full cookie-specimen overflow-hidden border border-[#C89D66]/30">
+                <img
+                  id="conoces-img"
+                  src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=800&q=80&fm=webp"
+                  width="370"
+                  height="370"
+                  alt="Vista 3D de Galleta Atelier seleccionada"
+                  class="w-full h-full object-cover scale-105"
+                />
+                <div id="conoces-sheen" class="absolute inset-0 pointer-events-none" style="background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.24) 48%, transparent 76%);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalle y CTA directo del sabor activo en 3D -->
+          <div class="mt-8 text-center max-w-md z-10 px-2">
+            <span id="conoces-active-badge" class="text-[10px] uppercase tracking-[0.24em] text-[#C89D66] font-semibold block">Edición Estrella</span>
+            <h3 id="conoces-active-title" class="text-2xl sm:text-3xl font-extrabold mt-1">Galleta de Dubái · $81 MXN</h3>
+            <p id="conoces-active-desc" class="text-xs sm:text-sm text-white/65 mt-2 leading-relaxed">
+              Masa de brownie rellena de kataifi crujiente y crema de pistache con trozos de chocolate semiamargo Ki'Xocolatl.
+            </p>
+            <div class="mt-5 flex items-center justify-center gap-4">
+              <button type="button" onclick="rotateConocesManual()" class="px-4 py-2.5 border border-white/20 text-[11px] uppercase tracking-[0.18em] hover:border-white transition-colors min-h-[44px]">
+                ↻ Girar 360°
+              </button>
+              <button type="button" id="conoces-add-btn" onclick="quickAddFromScene(activeConocesId)" class="px-6 py-2.5 bg-[#C89D66] text-[#110D0B] text-[11px] uppercase tracking-[0.18em] font-bold hover:bg-white transition-colors min-h-[44px]">
+                + Agregar a mi Box
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 5. TEXTURA / MACRO DETALLE (ZOOM CONTROLADO POR SCROLL)           -->
+    <!-- ================================================================= -->
+    <section id="textura" class="relative viewport-locked w-full overflow-hidden bg-[#0E0B09] text-[#F6F3EC] flex items-center justify-center">
+      
+      <div id="macro-image-container" class="absolute inset-0 w-full h-full">
+        <img
+          id="macro-img-1"
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1400&q=80&fm=webp"
+          loading="lazy"
+          decoding="async"
+          width="1400"
+          height="900"
+          alt="Detalle macro de la corteza dorada de Atelier Galleta"
+          class="absolute inset-0 w-full h-full object-cover opacity-65 scale-100"
+        />
+        <img
+          id="macro-img-2"
+          src="https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=1400&q=80&fm=webp"
+          loading="lazy"
+          decoding="async"
+          width="1400"
+          height="900"
+          alt="Detalle macro del relleno fundido de chocolate y pistache"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 scale-110"
+        />
+        <div class="absolute inset-0 bg-black/55"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <span class="text-[11px] uppercase tracking-[0.3em] text-[#C89D66] block mb-4">05 / Estudio de Textura</span>
+        <div class="relative min-h-[200px] flex items-center justify-center">
+          <div id="macro-caption-1" class="absolute inset-x-0">
+            <h3 class="display-section font-light">
+              Por fuera, <span class="font-serif italic">cristalización dorada.</span>
+            </h3>
+            <p class="mt-4 text-sm md:text-base text-white/75 max-w-xl mx-auto leading-relaxed">
+              Los primeros minutos en el horno caramelizan los azúcares exteriores creando una corteza firme que retiene el vapor interno.
+            </p>
+          </div>
+
+          <div id="macro-caption-2" class="reduced-motion-visible absolute inset-x-0 opacity-0 translate-y-8">
+            <h3 class="display-section font-light">
+              Por dentro, <span class="font-serif italic text-[#C89D66]">densidad fundente.</span>
+            </h3>
+            <p class="mt-4 text-sm md:text-base text-white/75 max-w-xl mx-auto leading-relaxed">
+              Al partirla en caliente, la estructura cede revelando vetas de chocolate derretido y cremas espesas sin aire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 6. LAS 3 SUCURSALES OFICIALES DE @ATELIERGALLETA EN YUCATÁN          -->
+    <!-- ================================================================= -->
+    <section id="sucursales" class="relative w-full bg-[#F6F3EC] text-[#110D0B] py-20 md:py-28 px-5 sm:px-8 md:px-12 border-t border-black/10">
+      <div class="max-w-[1440px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 md:mb-16">
+          <div class="lg:col-span-8">
+            <span class="text-xs uppercase tracking-[0.28em] text-[#9E3B24] font-semibold block mb-3">
+              06 / Presencia Oficial · @ateliergalleta
+            </span>
+            <h2 class="display-section font-extrabold">
+              3 sucursales en Yucatán.<br />
+              <span class="font-serif italic font-normal">Elige dónde recoger tu Box.</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-4 text-sm text-neutral-600 leading-relaxed">
+            Toca cualquier sucursal para preseleccionarla automáticamente en tu pedido programado por WhatsApp.
+          </div>
+        </div>
+
+        <!-- Grid completo de las 3 sucursales reales -->
+        <div id="branches-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <!-- Renderizado por JS para permitir selección interactiva con un toque -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 7. ATELIER BOX CONFIGURATOR & AGENDAMIENTO WHATSAPP               -->
+    <!-- ================================================================= -->
+    <section id="atelier-box" class="bg-[#F6F3EC] text-[#110D0B] py-20 md:py-28 px-5 sm:px-8 md:px-12 border-t border-black/10">
+      <div class="max-w-[1440px] mx-auto">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 pb-12 md:pb-16 border-b border-black/10 items-end">
+          <div class="lg:col-span-8">
+            <span class="text-xs uppercase tracking-[0.28em] text-[#9E3B24] font-semibold block mb-3">
+              07 / Atelier Personalizado · Pedido Directo @ateliergalleta
+            </span>
+            <h2 class="display-section font-extrabold">
+              Diseña tu Box.<br />
+              <span class="font-serif italic font-normal">Agenda la hora del horno.</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-4 text-sm text-neutral-600 leading-relaxed">
+            Arma visualmente tu caja de 4, 6 o 12 galletas, personaliza tu dedicatoria y envíala a nuestro WhatsApp para tenerlas recién horneadas.
+          </div>
+        </div>
+
+        <!-- PASO I: CAPACIDAD DE CAJA -->
+        <div class="py-10 md:py-12 border-b border-black/10">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="text-xs uppercase tracking-[0.22em] text-neutral-500 font-semibold">I. Selecciona la Capacidad de tu Box</span>
+            <span class="text-xs font-serif italic text-neutral-600">Descuento aplicado al completar la caja</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <button type="button" onclick="selectBoxSize(4)" id="size-btn-4" class="text-left p-6 md:p-8 border border-[#110D0B] bg-[#110D0B] text-[#F6F3EC] transition-all">
+              <div class="flex justify-between items-baseline">
+                <span class="font-serif italic text-xl md:text-2xl">Edición Cuádruple</span>
+                <span class="text-xs uppercase tracking-[0.18em] opacity-80">-5% OFF</span>
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">Box de 4 Galletas</h3>
+              <p class="text-xs opacity-75 mt-2 leading-relaxed">Ideal para compartir en pareja o degustar los clásicos.</p>
+            </button>
+
+            <button type="button" onclick="selectBoxSize(6)" id="size-btn-6" class="text-left p-6 md:p-8 border border-black/15 hover:border-black transition-all">
+              <div class="flex justify-between items-baseline">
+                <span class="font-serif italic text-xl md:text-2xl">Edición Regalo</span>
+                <span class="text-xs uppercase tracking-[0.18em] text-[#9E3B24] font-bold">-10% OFF + Caja Regalo</span>
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">Box de 6 Galletas</h3>
+              <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Incluye caja especial decorada y tarjeta dedicatoria sin cargo.</p>
+            </button>
+
+            <button type="button" onclick="selectBoxSize(12)" id="size-btn-12" class="text-left p-6 md:p-8 border border-black/15 hover:border-black transition-all">
+              <div class="flex justify-between items-baseline">
+                <span class="font-serif italic text-xl md:text-2xl">Edición Colección</span>
+                <span class="text-xs uppercase tracking-[0.18em] text-[#9E3B24] font-bold">-15% OFF VIP</span>
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold mt-2">Box de 12 Galletas</h3>
+              <p class="text-xs text-neutral-600 mt-2 leading-relaxed">Para cumpleaños, reuniones y eventos en Mérida.</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO II, III & IV: SELECCIÓN + BANDEJA VISUAL + FORMULARIO -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pt-10 md:pt-12 items-start">
+
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <span class="text-xs uppercase tracking-[0.22em] text-neutral-500 font-semibold">
+                II. Toca un sabor para añadirlo a tu Box
+              </span>
+              <div class="flex gap-4 text-xs uppercase tracking-[0.15em] font-semibold">
+                <button type="button" onclick="autoFillBox()" class="underline underline-offset-4 hover:opacity-60 py-1">
+                  Llenar con Favoritas Atelier
+                </button>
+                <button type="button" onclick="clearBox()" class="text-neutral-500 hover:text-black py-1">
+                  Vaciar
+                </button>
+              </div>
+            </div>
+
+            <div id="flavor-picker-grid" class="divide-y divide-black/10 border-t border-b border-black/10"></div>
+          </div>
+
+          <!-- Bandeja en Vivo y Programación -->
+          <div class="lg:col-span-5 lg:sticky lg:top-24 bg-[#EBE5D8] p-6 sm:p-8 md:p-10 border border-black/10">
+            
+            <div class="flex justify-between items-baseline pb-4 border-b border-black/10">
+              <div>
+                <h3 id="live-box-title" class="text-xl sm:text-2xl font-extrabold tracking-tight">Tu Box Atelier (2 de 4)</h3>
+                <p class="text-xs text-neutral-600 mt-1">Toca una ranura ocupada si deseas cambiarla</p>
+              </div>
+              <span id="box-badge-status" class="font-serif italic text-base text-[#9E3B24]">En composición</span>
+            </div>
+
+            <div id="visual-box-slots" class="grid grid-cols-2 gap-3 my-6"></div>
+
+            <!-- III. Complementos -->
+            <div class="pt-6 border-t border-black/10 space-y-4">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-neutral-600 font-semibold block">
+                III. Complementos & Dedicatoria
+              </span>
+
+              <div class="space-y-2 text-xs">
+                <label class="flex items-center justify-between py-2.5 border-b border-black/5 cursor-pointer">
+                  <span class="flex items-center gap-3">
+                    <input type="checkbox" id="extra-helado" onchange="renderBoxState()" class="accent-[#110D0B] w-4 h-4" />
+                    <span>Bola de Helado Artesanal</span>
+                  </span>
+                  <span class="font-semibold">+$35</span>
+                </label>
+
+                <label class="flex items-center justify-between py-2.5 border-b border-black/5 cursor-pointer">
+                  <span class="flex items-center gap-3">
+                    <input type="checkbox" id="extra-dip" onchange="renderBoxState()" class="accent-[#110D0B] w-4 h-4" />
+                    <span>Dip Extra de Nutella tibia</span>
+                  </span>
+                  <span class="font-semibold">+$25</span>
+                </label>
+
+                <label class="flex items-center justify-between py-2.5 border-b border-black/5 cursor-pointer">
+                  <span class="flex items-center gap-3">
+                    <input type="checkbox" id="extra-giftbox" onchange="renderBoxState()" class="accent-[#110D0B] w-4 h-4" />
+                    <span>Caja Decorada de Regalo + Listón</span>
+                  </span>
+                  <span id="giftbox-price-label" class="font-semibold">+$30</span>
+                </label>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div>
+                  <label for="gift-to" class="sr-only">Destinatario</label>
+                  <input id="gift-to" type="text" placeholder="¿Para quién es? (Opcional)" class="w-full minimal-input py-2.5 text-xs" />
+                </div>
+                <div>
+                  <label for="gift-note" class="sr-only">Dedicatoria en caja</label>
+                  <input id="gift-note" type="text" placeholder="Nota en la caja (Opcional)" class="w-full minimal-input py-2.5 text-xs" />
+                </div>
+              </div>
+            </div>
+
+            <!-- IV. Programación de Sucursal y Horario -->
+            <div class="pt-6 mt-6 border-t border-black/10 space-y-4">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-neutral-600 font-semibold block">
+                IV. Agenda tu Recolección o Envío en Mérida
+              </span>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <label class="cursor-pointer">
+                  <input type="radio" name="ag-delivery-mode" value="Pick-up en Sucursal (Recién horneadas)" checked onchange="toggleAddressField()" class="peer hidden" />
+                  <div class="py-3 text-center border border-black/20 peer-checked:bg-[#110D0B] peer-checked:text-[#F6F3EC] uppercase tracking-[0.12em] font-semibold transition-colors">
+                    Pick-up Sucursal
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="ag-delivery-mode" value="Envío a Domicilio en Mérida" onchange="toggleAddressField()" class="peer hidden" />
+                  <div class="py-3 text-center border border-black/20 peer-checked:bg-[#110D0B] peer-checked:text-[#F6F3EC] uppercase tracking-[0.12em] font-semibold transition-colors">
+                    Envío Domicilio
+                  </div>
+                </label>
+              </div>
+
+              <div>
+                <label for="ag-branch" class="text-[10px] uppercase tracking-[0.18em] text-neutral-600 block mb-1">Sucursal Oficial @ateliergalleta</label>
+                <select id="ag-branch" class="w-full bg-transparent border-b border-black/25 py-2.5 text-xs font-semibold focus:outline-none">
+                  <option value="Sucursal Norte">1. Sucursal Norte</option>
+                  <option value="Sucursal Centro">2. Sucursal Centro</option>
+                  <option value="Sucursal Oriente">3. Sucursal Oriente</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="ag-date" class="text-[10px] uppercase tracking-[0.18em] text-neutral-600 block mb-1">Fecha Programada</label>
+                  <input id="ag-date" type="date" class="w-full minimal-input py-2 text-xs font-semibold" />
+                </div>
+                <div>
+                  <label for="ag-time" class="text-[10px] uppercase tracking-[0.18em] text-neutral-600 block mb-1">Salida del Horno</label>
+                  <select id="ag-time" class="w-full bg-transparent border-b border-black/25 py-2 text-xs font-semibold focus:outline-none">
+                    <option value="Lo antes posible (30-45 min)">Lo antes posible (30-45 min)</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                    <option value="06:30 PM">06:30 PM</option>
+                    <option value="08:00 PM">08:00 PM</option>
+                    <option value="09:15 PM">09:15 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="customer-name" class="sr-only">Tu nombre completo</label>
+                <input id="customer-name" type="text" autocomplete="name" placeholder="Tu nombre para entregar el pedido *" class="w-full minimal-input py-2.5 text-xs" />
+              </div>
+              <div id="address-wrap" class="hidden">
+                <label for="customer-address" class="sr-only">Dirección exacta en Mérida</label>
+                <input id="customer-address" type="text" autocomplete="street-address" placeholder="Dirección completa en Mérida y referencias *" class="w-full minimal-input py-2.5 text-xs" />
+              </div>
+            </div>
+
+            <!-- Desglose Total y Envío a WhatsApp -->
+            <div class="pt-6 mt-6 border-t border-black/15 space-y-2 text-xs">
+              <div class="flex justify-between text-neutral-600">
+                <span>Subtotal Galletas</span>
+                <span id="summary-subtotal">$0.00 MXN</span>
+              </div>
+              <div id="summary-discount-row" class="flex justify-between text-[#9E3B24] font-semibold hidden">
+                <span id="summary-discount-label">Beneficio Box</span>
+                <span id="summary-discount">-$0.00 MXN</span>
+              </div>
+              <div id="summary-extras-row" class="flex justify-between text-neutral-600 hidden">
+                <span>Complementos</span>
+                <span id="summary-extras">+$0.00 MXN</span>
+              </div>
+              <div class="flex justify-between text-xl font-extrabold pt-3 border-t border-black/10">
+                <span>Total Estimado</span>
+                <span id="summary-total">$0.00 MXN</span>
+              </div>
+
+              <button type="button" onclick="sendBoxToWhatsApp()" class="w-full mt-6 bg-[#110D0B] text-[#F6F3EC] py-4 px-4 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#2B211C] transition-colors cursor-pointer min-h-[52px]">
+                Confirmar y Agendar por WhatsApp →
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 8. CIERRE CINEMATOGRÁFICO                                           -->
+  <!-- =================================================================== -->
+  <footer class="relative min-h-[80svh] w-full bg-[#110D0B] text-[#F6F3EC] flex flex-col justify-between py-20 md:py-24 px-5 sm:px-8 md:px-12 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto w-full flex-1 flex flex-col items-center justify-center text-center z-10">
+      <span class="text-xs uppercase tracking-[0.3em] text-[#C89D66] mb-5">Recién horneadas en Mérida · @ateliergalleta</span>
+      <h2 class="display-hero font-extrabold max-w-4xl">
+        El calor dura <span class="font-serif italic font-normal text-[#C89D66]">un instante.</span>
+      </h2>
+      <div class="my-10 md:my-12">
+        <img
+          id="closing-cookie"
+          src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80&fm=webp"
+          loading="lazy"
+          decoding="async"
+          width="240"
+          height="240"
+          alt="Galleta Atelier recién horneada"
+          class="w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 object-cover cookie-specimen mx-auto"
+        />
+      </div>
+      <a href="#atelier-box" class="inline-flex items-center justify-center border border-[#F6F3EC]/40 px-8 sm:px-10 py-4 text-xs uppercase tracking-[0.22em] hover:bg-[#F6F3EC] hover:text-[#110D0B] transition-colors min-h-[48px]">
+        Programar mi Box Ahora
+      </a>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto w-full pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-[11px] uppercase tracking-[0.18em] text-white/50 gap-4">
+      <span>© 2026 Atelier Galleta · Mérida, Yucatán</span>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram @ateliergalleta</a>
+        <a href="https://wa.me/529992565297" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp 999 256 5297</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================================================================== -->
+  <!-- LÓGICA DE APLICACIÓN Y MOTOR GSAP MULTI-DISPOSITIVO                 -->
+  <!-- =================================================================== -->
+  <script>
+    /* 1. DICCIONARIO DE ACTIVOS OPTIMIZADOS EN WEBP (@ateliergalleta) */
+    const ATELIER_ASSETS = {
+      'dubai': 'https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'lotus': 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'ferrero-brownie': 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'queso-bola': 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'kinder-bueno': 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'red-velvet': 'https://images.unsplash.com/photo-1607920592519-bab2a80efd55?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'brownie-nutella': 'https://images.unsplash.com/photo-1618923850107-d1a234d7a73a?auto=format&fit=crop&w=800&q=80&fm=webp',
+      'conejo-turin': 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80&fm=webp'
+    };
+
+    const AG_MENU = [
+      {
+        id: 'dubai',
+        name: 'Galleta de Dubái',
+        price: 81,
+        badge: 'Viral en Mérida',
+        desc: 'Masa de brownie rellena de kataifi crujiente y crema de pistache con trozos de chocolate semiamargo Ki\'Xocolatl.'
+      },
+      {
+        id: 'lotus',
+        name: 'Lotus con Chocolate Blanco',
+        price: 87,
+        badge: 'Top Ventas',
+        desc: 'Rellena de crema Lotus Biscoff fundida, trozos de chocolate blanco y galleta Lotus caramelizada.'
+      },
+      {
+        id: 'ferrero-brownie',
+        name: 'Ferrero Brownie',
+        price: 87,
+        badge: 'Doble Chocolate',
+        desc: 'Masa intensa de brownie rellena de un Ferrero Rocher entero, Nutella y avellana troceada.'
+      },
+      {
+        id: 'queso-bola',
+        name: 'Queso de Bola y Nutella',
+        price: 74,
+        badge: 'Clásico Yucateco',
+        desc: 'Contraste salado-dulce con queso de bola Edam holandés rallado y corazón de Nutella.'
+      },
+      {
+        id: 'kinder-bueno',
+        name: 'Galleta Kínder Bueno',
+        price: 74,
+        badge: 'Avellana Cremosa',
+        desc: 'Masa de vainilla dorada rellena de crema de avellanas y coronada con trozos de Kínder Bueno.'
+      },
+      {
+        id: 'red-velvet',
+        name: 'Galleta Red Velvet',
+        price: 68,
+        badge: 'Terciopelo',
+        desc: 'Suave masa roja aterciopelada con toque de cacao y chispas de chocolate blanco.'
+      },
+      {
+        id: 'brownie-nutella',
+        name: 'Brownie con Nutella',
+        price: 74,
+        badge: 'Centro Líquido',
+        desc: 'Textura fudgy recién salida del horno con núcleo líquido de Nutella y nueces.'
+      },
+      {
+        id: 'conejo-turin',
+        name: 'Galleta Conejo Turín',
+        price: 68,
+        badge: 'Chocolate de Leche',
+        desc: 'Masa tradicional con trozos de chocolate Conejo Turín que se funden al calentarla.'
+      }
+    ];
+
+    const AG_BRANCHES = [
+      { name: 'Sucursal Norte', zone: 'Zona Norte', address: 'Dirección de ejemplo, Mérida', hours: '1:00 PM – 10:00 PM' },
+      { name: 'Sucursal Centro', zone: 'Centro', address: 'Dirección de ejemplo, Mérida', hours: '1:00 PM – 10:00 PM' },
+      { name: 'Sucursal Oriente', zone: 'Zona Oriente', address: 'Dirección de ejemplo, Mérida', hours: '2:00 PM – 10:00 PM' }
+    ];
+
+    const AG_WHATSAPP_NUMBER = '529992565297';
+    let currentBoxSize = 4;
+    let selectedCookies = ['dubai', 'lotus'];
+    let activeConocesId = 'dubai';
+    let manualSpinAngle = 0;
+    let toastTimer = null;
+
+    /* 2. NOTIFICACIONES NO BLOQUEANTES Y MENÚ MÓVIL */
+    function showToast(message) {
+      const toast = document.getElementById('ui-toast');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+        toast.classList.remove('opacity-100');
+      }, 2800);
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const btn = document.getElementById('mobile-menu-btn');
+      const line1 = document.getElementById('burger-line-1');
+      const line2 = document.getElementById('burger-line-2');
+      const isHidden = drawer.classList.contains('hidden');
+
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        line1.style.transform = 'translateY(4px) rotate(45deg)';
+        line2.style.transform = 'translateY(-4px) rotate(-45deg)';
+      } else {
+        closeMobileMenu();
+      }
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const btn = document.getElementById('mobile-menu-btn');
+      const line1 = document.getElementById('burger-line-1');
+      const line2 = document.getElementById('burger-line-2');
+      drawer.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      line1.style.transform = 'none';
+      line2.style.transform = 'none';
+    }
+
+    /* 3. SECCIÓN "¿CONOCES?" 3D INTERACTIVA */
+    function renderConocesSection() {
+      const listContainer = document.getElementById('conoces-buttons-list');
+      listContainer.innerHTML = AG_MENU.map((item, idx) => {
+        const isActive = item.id === activeConocesId;
+        const activeClass = isActive
+          ? 'border-[#C89D66] bg-white/10 text-white'
+          : 'border-white/10 text-white/55 hover:text-white hover:border-white/30';
+        return `
+          <button
+            type="button"
+            role="tab"
+            aria-selected="${isActive}"
+            onclick="setConocesActive('${item.id}')"
+            class="shrink-0 lg:w-full text-left py-3 px-4 border lg:border-0 lg:border-l-2 ${activeClass} transition-all duration-300 flex items-center justify-between gap-4 min-h-[48px]"
+          >
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.18em] opacity-65 block">0${idx + 1} · $${item.price} MXN</span>
+              <span class="text-sm sm:text-base font-bold tracking-tight whitespace-nowrap lg:whitespace-normal block">${item.name}</span>
+            </div>
+            <span class="font-serif italic text-xs text-[#C89D66] hidden lg:inline">${isActive ? 'En escena ●' : '3D →'}</span>
+          </button>
+        `;
+      }).join('');
+
+      const activeItem = AG_MENU.find(x => x.id === activeConocesId) || AG_MENU[0];
+      const imgUrl = ATELIER_ASSETS[activeItem.id];
+      document.getElementById('conoces-img').src = imgUrl;
+      document.getElementById('conoces-img-back').src = imgUrl;
+      document.getElementById('conoces-active-badge').textContent = activeItem.badge;
+      document.getElementById('conoces-active-title').textContent = `${activeItem.name} · $${activeItem.price} MXN`;
+      document.getElementById('conoces-active-desc').textContent = activeItem.desc;
+    }
+
+    function setConocesActive(id) {
+      activeConocesId = id;
+      renderConocesSection();
+      if (window.gsap) {
+        gsap.fromTo('#conoces-3d-rotor',
+          { scale: 0.86, rotationY: -35, rotationZ: -12 },
+          { scale: 1, rotationY: 14, rotationZ: 0, duration: 0.65, ease: 'power3.out' }
+        );
+      }
+    }
+
+    function rotateConocesManual() {
+      manualSpinAngle += 360;
+      if (window.gsap) {
+        gsap.to('#conoces-3d-rotor', {
+          rotationZ: manualSpinAngle,
+          rotationY: 22,
+          rotationX: 14,
+          duration: 0.9,
+          ease: 'power2.inOut'
+        });
+      }
+    }
+
+    /* 4. SUCURSALES Y CONFIGURADOR DE BOX */
+    function renderBranchesGrid() {
+      const container = document.getElementById('branches-grid');
+      const currentSelected = document.getElementById('ag-branch').value;
+      container.innerHTML = AG_BRANCHES.map((b, idx) => {
+        const isCurrent = b.name === currentSelected;
+        return `
+          <button
+            type="button"
+            onclick="selectBranchFromCard('${b.name}')"
+            class="text-left bg-white p-6 border ${isCurrent ? 'border-[#9E3B24] ring-1 ring-[#9E3B24]' : 'border-black/10 hover:border-black'} transition-all flex flex-col justify-between min-h-[160px]"
+          >
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.2em] text-[#9E3B24] font-bold">0${idx + 1} · ${b.zone}</span>
+              <h3 class="text-base sm:text-lg font-extrabold mt-1">${b.name}</h3>
+              <p class="text-xs text-neutral-500 mt-1.5 leading-relaxed">${b.address}</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-black/10 w-full text-[11px] font-semibold flex items-center justify-between">
+              <span class="text-neutral-500">${b.hours}</span>
+              <span class="text-[#9E3B24]">${isCurrent ? '✓ Seleccionada' : 'Elegir →'}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectBranchFromCard(branchName) {
+      const select = document.getElementById('ag-branch');
+      select.value = branchName;
+      renderBranchesGrid();
+      showToast(`Sucursal seleccionada: ${branchName}`);
+      document.getElementById('atelier-box').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderFlavorPicker() {
+      const grid = document.getElementById('flavor-picker-grid');
+      grid.innerHTML = AG_MENU.map((cookie, idx) => `
+        <button
+          type="button"
+          onclick="addCookieToSlot('${cookie.id}')"
+          class="w-full text-left py-4 sm:py-5 flex items-center justify-between gap-4 cursor-pointer group hover:bg-black/[0.03] px-2 transition-colors"
+        >
+          <div class="flex items-center gap-3.5 sm:gap-5 min-w-0">
+            <span class="font-serif italic text-base sm:text-lg text-neutral-400 w-5 shrink-0">0${idx + 1}</span>
+            <img
+              src="${ATELIER_ASSETS[cookie.id]}"
+              alt="${cookie.name}"
+              loading="lazy"
+              decoding="async"
+              width="56"
+              height="56"
+              class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shrink-0 group-hover:scale-105 transition-transform"
+            />
+            <div class="min-w-0">
+              <span class="text-[10px] uppercase tracking-[0.18em] text-[#9E3B24] font-semibold block">${cookie.badge}</span>
+              <h4 class="text-sm sm:text-base md:text-lg font-bold tracking-tight truncate">${cookie.name}</h4>
+              <p class="text-xs text-neutral-600 line-clamp-1 mt-0.5">${cookie.desc}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="text-xs sm:text-sm font-bold">$${cookie.price}</span>
+            <span class="w-9 h-9 border border-black/25 flex items-center justify-center text-base font-bold group-hover:bg-[#110D0B] group-hover:text-white transition-colors" aria-hidden="true">+</span>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    function selectBoxSize(size) {
+      currentBoxSize = size;
+      if (selectedCookies.length > size) {
+        selectedCookies = selectedCookies.slice(0, size);
+      }
+
+      [4, 6, 12].forEach(s => {
+        const btn = document.getElementById(`size-btn-${s}`);
+        if (s === size) {
+          btn.className = 'text-left p-6 md:p-8 border border-[#110D0B] bg-[#110D0B] text-[#F6F3EC] transition-all';
+        } else {
+          btn.className = 'text-left p-6 md:p-8 border border-black/15 hover:border-black transition-all text-[#110D0B]';
+        }
+      });
+
+      renderBoxState();
+    }
+
+    function quickAddFromScene(cookieId) {
+      addCookieToSlot(cookieId);
+      const item = AG_MENU.find(x => x.id === cookieId);
+      if (item) showToast(`${item.name} añadida a tu Box`);
+      document.getElementById('atelier-box').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function addCookieToSlot(cookieId) {
+      if (selectedCookies.length >= currentBoxSize) {
+        if (currentBoxSize === 4) {
+          selectBoxSize(6);
+          showToast('Tu Box creció a 6 galletas (-10% OFF activado)');
+        } else if (currentBoxSize === 6) {
+          selectBoxSize(12);
+          showToast('Tu Box creció a 12 galletas (-15% OFF VIP)');
+        } else {
+          showToast('Tu Box de 12 está llena. Toca una ranura para reemplazarla.');
+          return;
+        }
+      }
+      selectedCookies.push(cookieId);
+      renderBoxState();
+    }
+
+    function removeCookieFromSlot(index) {
+      selectedCookies.splice(index, 1);
+      renderBoxState();
+    }
+
+    function autoFillBox() {
+      const favorites = ['dubai', 'lotus', 'ferrero-brownie', 'queso-bola', 'kinder-bueno', 'red-velvet'];
+      selectedCookies = [];
+      for (let i = 0; i < currentBoxSize; i++) {
+        selectedCookies.push(favorites[i % favorites.length]);
+      }
+      renderBoxState();
+      showToast(`Box de ${currentBoxSize} completada con las favoritas Atelier`);
+    }
+
+    function clearBox() {
+      selectedCookies = [];
+      renderBoxState();
+      showToast('Bandeja reiniciada');
+    }
+
+    function toggleAddressField() {
+      const mode = document.querySelector('input[name="ag-delivery-mode"]:checked').value;
+      const addrWrap = document.getElementById('address-wrap');
+      addrWrap.classList.toggle('hidden', !mode.includes('Domicilio'));
+    }
+
+    function renderBoxState() {
+      const slotsContainer = document.getElementById('visual-box-slots');
+      const count = selectedCookies.length;
+
+      slotsContainer.className = `grid ${currentBoxSize === 12 ? 'grid-cols-3 sm:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3'} gap-2.5 my-6`;
+
+      let slotsHtml = '';
+      for (let i = 0; i < currentBoxSize; i++) {
+        const cookieId = selectedCookies[i];
+        if (cookieId) {
+          const item = AG_MENU.find(x => x.id === cookieId);
+          slotsHtml += `
+            <button
+              type="button"
+              onclick="removeCookieFromSlot(${i})"
+              aria-label="Quitar ${item.name} de la ranura ${i + 1}"
+              class="bg-[#F6F3EC] p-3 border border-black/15 flex flex-col items-center text-center cursor-pointer group hover:border-[#9E3B24] transition-colors relative min-h-[96px]"
+            >
+              <span class="absolute top-1 right-2 text-[10px] opacity-40 group-hover:opacity-100">✕</span>
+              <img src="${ATELIER_ASSETS[item.id]}" alt="${item.name}" width="44" height="44" class="w-11 h-11 rounded-full object-cover mb-2" />
+              <span class="text-[11px] font-bold leading-tight line-clamp-1">${item.name}</span>
+              <span class="text-[10px] text-neutral-500 mt-0.5">$${item.price}</span>
+            </button>
+          `;
+        } else {
+          slotsHtml += `
+            <div class="p-3 border border-dashed border-black/25 flex flex-col items-center justify-center text-center min-h-[96px] opacity-45">
+              <span class="font-serif italic text-sm">0${i + 1}</span>
+              <span class="text-[10px] uppercase tracking-widest mt-0.5">Disponible</span>
+            </div>
+          `;
+        }
+      }
+      slotsContainer.innerHTML = slotsHtml;
+
+      document.getElementById('live-box-title').textContent = `Tu Box Atelier (${count} de ${currentBoxSize})`;
+      document.getElementById('nav-box-counter').textContent = `(${count}/${currentBoxSize})`;
+      document.getElementById('wa-float-badge').textContent = `${count}/${currentBoxSize}`;
+
+      const badge = document.getElementById('box-badge-status');
+      badge.textContent = count === currentBoxSize ? '✓ Box Completa' : `Faltan ${currentBoxSize - count}`;
+
+      const subtotal = selectedCookies.reduce((sum, id) => {
+        const c = AG_MENU.find(x => x.id === id);
+        return sum + (c ? c.price : 0);
+      }, 0);
+
+      let discountRate = 0;
+      if (count === currentBoxSize) {
+        if (currentBoxSize === 4) discountRate = 0.05;
+        if (currentBoxSize === 6) discountRate = 0.10;
+        if (currentBoxSize === 12) discountRate = 0.15;
+      }
+      const discountAmount = Math.round(subtotal * discountRate);
+
+      let extrasTotal = 0;
+      if (document.getElementById('extra-helado').checked) extrasTotal += 35;
+      if (document.getElementById('extra-dip').checked) extrasTotal += 25;
+
+      const giftBoxLabel = document.getElementById('giftbox-price-label');
+      if (currentBoxSize >= 6) {
+        giftBoxLabel.textContent = 'Cortesía';
+      } else {
+        giftBoxLabel.textContent = '+$30';
+        if (document.getElementById('extra-giftbox').checked) extrasTotal += 30;
+      }
+
+      const finalTotal = subtotal - discountAmount + extrasTotal;
+
+      document.getElementById('summary-subtotal').textContent = `$${subtotal}.00 MXN`;
+
+      const discountRow = document.getElementById('summary-discount-row');
+      if (discountAmount > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('summary-discount-label').textContent = `Beneficio Box de ${currentBoxSize} (-${discountRate * 100}%)`;
+        document.getElementById('summary-discount').textContent = `-$${discountAmount}.00 MXN`;
+      } else {
+        discountRow.classList.add('hidden');
+      }
+
+      const extrasRow = document.getElementById('summary-extras-row');
+      if (extrasTotal > 0) {
+        extrasRow.classList.remove('hidden');
+        document.getElementById('summary-extras').textContent = `+$${extrasTotal}.00 MXN`;
+      } else {
+        extrasRow.classList.add('hidden');
+      }
+
+      document.getElementById('summary-total').textContent = `$${finalTotal}.00 MXN`;
+    }
+
+    /* 5. MOTOR DE ENVÍO A WHATSAPP (BOTÓN FLOTANTE Y FORMULARIO) */
+    function buildWhatsAppMessage(customerName, isQuickFloat = false) {
+      const counts = {};
+      selectedCookies.forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+
+      const deliveryMode = document.querySelector('input[name="ag-delivery-mode"]:checked').value;
+      const branch = document.getElementById('ag-branch').value;
+      const date = document.getElementById('ag-date').value;
+      const time = document.getElementById('ag-time').value;
+      const address = document.getElementById('customer-address').value.trim();
+      const giftTo = document.getElementById('gift-to').value.trim();
+      const giftNote = document.getElementById('gift-note').value.trim();
+      const totalText = document.getElementById('summary-total').textContent;
+      const folio = 'Atelier-' + Math.floor(1000 + Math.random() * 9000);
+
+      let msg = `🍪 *PEDIDO WEB — @ateliergalleta MÉRIDA*\n`;
+      msg += `Folio: #${folio}\n`;
+      if (customerName) msg += `Cliente: ${customerName}\n`;
+      msg += `\n*MI BOX CONFIGURADA (${selectedCookies.length} Galletas):*\n`;
+
+      Object.entries(counts).forEach(([id, qty]) => {
+        const item = AG_MENU.find(x => x.id === id);
+        if (item) msg += `• ${qty}x ${item.name} ($${item.price * qty})\n`;
+      });
+
+      const extras = [];
+      if (document.getElementById('extra-helado').checked) extras.push('Helado Artesanal (+$35)');
+      if (document.getElementById('extra-dip').checked) extras.push('Dip Extra Nutella (+$25)');
+      if (document.getElementById('extra-giftbox').checked || currentBoxSize >= 6) extras.push('Caja Especial Regalo');
+
+      if (extras.length > 0) msg += `\n*Complementos:* ${extras.join(', ')}\n`;
+
+      if (giftTo || giftNote) {
+        msg += `\n*Dedicatoria:*\n`;
+        if (giftTo) msg += `• Para: ${giftTo}\n`;
+        if (giftNote) msg += `• Nota: "${giftNote}"\n`;
+      }
+
+      msg += `\n*SUCURSAL Y HORARIO EN MÉRIDA:*\n`;
+      msg += `• Modalidad: ${deliveryMode}\n`;
+      msg += `• Sucursal: ${branch}\n`;
+      if (deliveryMode.includes('Domicilio') && address) msg += `• Dirección: ${address}\n`;
+      if (date) msg += `• Fecha: ${date}\n`;
+      msg += `• Horario: ${time}\n\n`;
+      msg += `*TOTAL ESTIMADO:* ${totalText}\n\n`;
+      msg += isQuickFloat
+        ? `¡Hola Atelier Galleta! Quiero confirmar y agendar este pedido recién horneado.`
+        : `¿Me confirman disponibilidad para hornear mi Box a esa hora?`;
+
+      return msg;
+    }
+
+    function triggerQuickWhatsApp() {
+      if (selectedCookies.length === 0) {
+        const defaultMsg = '¡Hola @ateliergalleta! 🍪 Quiero pedir una Box de galletas recién horneadas en Mérida.';
+        window.open(`https://wa.me/${AG_WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMsg)}`, '_blank');
+        return;
+      }
+      const customerName = document.getElementById('customer-name').value.trim();
+      const msg = buildWhatsAppMessage(customerName, true);
+      window.open(`https://wa.me/${AG_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function sendBoxToWhatsApp() {
+      if (selectedCookies.length === 0) {
+        showToast('Agrega al menos una galleta a tu Box antes de continuar');
+        return;
+      }
+
+      const nameInput = document.getElementById('customer-name');
+      const customerName = nameInput.value.trim();
+      if (!customerName) {
+        showToast('Por favor escribe tu nombre para agendar tu Box');
+        nameInput.focus();
+        return;
+      }
+
+      const deliveryMode = document.querySelector('input[name="ag-delivery-mode"]:checked').value;
+      const addrInput = document.getElementById('customer-address');
+      const address = addrInput.value.trim();
+      if (deliveryMode.includes('Domicilio') && !address) {
+        showToast('Escribe tu dirección en Mérida para el envío a domicilio');
+        addrInput.focus();
+        return;
+      }
+
+      const msg = buildWhatsAppMessage(customerName, false);
+      window.open(`https://wa.me/${AG_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    /* 6. AUTO-HIDE DEL HEADER AL HACER SCROLL HACIA ABAJO */
+    function initHeaderAutoHide() {
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('site-header');
+
+      window.addEventListener('scroll', () => {
+        const currentY = window.scrollY;
+        if (currentY <= 40) {
+          header.style.transform = 'translateY(0)';
+          lastScrollY = currentY;
+          return;
+        }
+        if (currentY > lastScrollY && currentY > 90) {
+          closeMobileMenu();
+          header.style.transform = 'translateY(-105%)';
+        } else if (currentY < lastScrollY - 8) {
+          header.style.transform = 'translateY(0)';
+        }
+        lastScrollY = currentY;
+      }, { passive: true });
+    }
+
+    /* 7. COREOGRAFÍA GSAP + SCROLLTRIGGER (DESKTOP, TABLET Y MOBILE) */
+    function initChoreography() {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Evita saltos en Safari iOS cuando cambia la barra de navegación móvil
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add({
+        isDesktop: '(min-width: 1024px)',
+        isTablet: '(min-width: 768px) and (max-width: 1023px)',
+        isMobile: '(max-width: 767px)'
+      }, (context) => {
+        const { isDesktop, isTablet, isMobile } = context.conditions;
+        const splitOffset = isDesktop ? 135 : (isTablet ? 95 : 52);
+
+        // 1. HERO: Entrada limpia y rotación acoplada al scroll
+        gsap.from('#hero-copy > *', {
+          y: 28,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: 'power3.out'
+        });
+
+        gsap.to('#hero-cookie-img', {
+          scale: isMobile ? 1.1 : 1.22,
+          rotation: isMobile ? 28 : 45,
+          yPercent: isMobile ? 8 : 16,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        // 2. DECONSTRUCCIÓN PINNED (Adaptada según Desktop / Tablet / Mobile)
+        const anatomyTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#anatomia',
+            start: 'top top',
+            end: isDesktop ? '+=230%' : (isTablet ? '+=185%' : '+=145%'),
+            pin: true,
+            scrub: 1
+          }
+        });
+
+        anatomyTl
+          .fromTo('#exploded-cookie-stage',
+            { scale: 0.78, rotation: -14 },
+            { scale: isMobile ? 1.02 : 1.08, rotation: 0, duration: 0.9, ease: 'power2.inOut' }
+          )
+          .to('#core-thermal-glow', { opacity: 1, scale: 1.15, duration: 0.8 }, '<0.1')
+          .to('#cookie-half-left', { x: -splitOffset, rotation: -8, duration: 1.1, ease: 'power2.inOut' }, 'split')
+          .to('#cookie-half-right', { x: splitOffset, rotation: 8, duration: 1.1, ease: 'power2.inOut' }, 'split')
+          .to('#molten-core-center', { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' }, 'split+=0.15');
+
+        if (isMobile) {
+          anatomyTl
+            .to('#mobile-specs-grid', { opacity: 1, y: -6, duration: 0.7 }, 'split+=0.3')
+            .to('#mobile-specs-grid', { opacity: 0.2, duration: 0.4 }, '+=0.5');
+        } else {
+          anatomyTl
+            .to('#spec-node-1', { opacity: 1, y: -8, duration: 0.5 }, 'split+=0.3')
+            .to('#spec-node-2', { opacity: 1, y: -8, duration: 0.5 }, 'split+=0.45')
+            .to('#spec-node-3', { opacity: 1, y: -8, duration: 0.5 }, 'split+=0.6')
+            .to('#spec-node-4', { opacity: 1, y: -8, duration: 0.5 }, 'split+=0.75')
+            .to(['#spec-node-1', '#spec-node-2', '#spec-node-3', '#spec-node-4'], { opacity: 0, duration: 0.5 }, '+=0.5');
+        }
+
+        anatomyTl
+          .to('#molten-core-center', { opacity: 0, scale: 0.5, duration: 0.6 }, '<')
+          .to(['#cookie-half-left', '#cookie-half-right'], { x: 0, rotation: 0, duration: 0.9, ease: 'power3.inOut' }, '<0.1');
+
+        // 3. ESCENAS DE SABOR: Transición cromática + entrada lateral
+        const scenes = gsap.utils.toArray('.flavor-scene');
+        scenes.forEach((scene) => {
+          const bgColor = scene.dataset.bg;
+          const textColor = scene.dataset.text;
+
+          ScrollTrigger.create({
+            trigger: scene,
+            start: 'top 58%',
+            end: 'bottom 42%',
+            onEnter: () => gsap.to('#coleccion', { backgroundColor: bgColor, color: textColor, duration: 0.55, overwrite: 'auto' }),
+            onEnterBack: () => gsap.to('#coleccion', { backgroundColor: bgColor, color: textColor, duration: 0.55, overwrite: 'auto' })
+          });
+
+          const rightCookie = scene.querySelector('.flavor-cookie-right img');
+          const leftCookie = scene.querySelector('.flavor-cookie-left img');
+          const textBlock = scene.querySelector('.flavor-text-block');
+          const travelX = isMobile ? 14 : 26;
+
+          if (rightCookie) {
+            gsap.fromTo(rightCookie,
+              { xPercent: travelX, rotation: 26, scale: 0.88, opacity: 0.25 },
+              {
+                xPercent: 0, rotation: 0, scale: 1, opacity: 1, ease: 'none',
+                scrollTrigger: { trigger: scene, start: 'top 90%', end: 'center center', scrub: 1 }
+              }
+            );
+          }
+
+          if (leftCookie) {
+            gsap.fromTo(leftCookie,
+              { xPercent: -travelX, rotation: -26, scale: 0.88, opacity: 0.25 },
+              {
+                xPercent: 0, rotation: 0, scale: 1, opacity: 1, ease: 'none',
+                scrollTrigger: { trigger: scene, start: 'top 90%', end: 'center center', scrub: 1 }
+              }
+            );
+          }
+
+          if (textBlock) {
+            gsap.fromTo(textBlock,
+              { y: isMobile ? 25 : 45, opacity: 0.15 },
+              {
+                y: 0, opacity: 1, ease: 'none',
+                scrollTrigger: { trigger: scene, start: 'top 85%', end: 'center 55%', scrub: 1 }
+              }
+            );
+          }
+        });
+
+        // 4. SECCIÓN "¿CONOCES?" 3D: Rotación continua vinculada al scroll
+        gsap.fromTo('#conoces-3d-rotor',
+          { rotationX: 24, rotationY: -22, rotationZ: -30 },
+          {
+            rotationX: 10,
+            rotationY: 24,
+            rotationZ: 120,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#conoces',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1
+            }
+          }
+        );
+
+        // 5. ESTUDIO MACRO DE TEXTURA
+        const macroTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#textura',
+            start: 'top top',
+            end: isMobile ? '+=130%' : '+=170%',
+            pin: true,
+            scrub: 1
+          }
+        });
+
+        macroTl
+          .to('#macro-img-1', { scale: 1.18, duration: 1, ease: 'none' }, 0)
+          .to('#macro-caption-1', { opacity: 0, y: -24, duration: 0.4 }, 0.45)
+          .to('#macro-img-2', { opacity: 0.72, scale: 1, duration: 0.55, ease: 'power2.inOut' }, 0.45)
+          .to('#macro-caption-2', { opacity: 1, y: 0, duration: 0.45 }, 0.6);
+
+        // 6. CIERRE: Acercamiento de la galleta final
+        gsap.fromTo('#closing-cookie',
+          { scale: 0.76, rotation: -20 },
+          {
+            scale: 1.06, rotation: 10, ease: 'none',
+            scrollTrigger: {
+              trigger: 'footer',
+              start: 'top bottom',
+              end: 'bottom bottom',
+              scrub: 1
+            }
+          }
+        );
+      });
+    }
+
+    /* Inicialización Segura */
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('ag-date');
+      dateInput.value = today;
+      dateInput.min = today;
+
+      renderConocesSection();
+      renderBranchesGrid();
+      renderFlavorPicker();
+      renderBoxState();
+      initHeaderAutoHide();
+      initChoreography();
+    });
+  </script>
+</body>
+</html>

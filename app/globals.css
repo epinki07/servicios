@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --color-crema: #F6F3EC;
+  --color-noche: #110D0B;
+  --color-oro: #C89D66;
+  --color-tinta: #0a0a0a;
+  --color-papel: #fafafa;
+  --color-gris: #6e6e73;
+  --color-linea: #e5e5e5;
+}
+
+html { scroll-behavior: smooth; }
+body { background: #110D0B; color: #110D0B; }
+
+/* Entrada de la portada, palabra por palabra */
+.entra { opacity: 0; transform: translateY(28px); filter: blur(8px); animation: entra 0.9s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes entra { to { opacity: 1; transform: none; filter: blur(0); } }
+
+/* Aparecer al hacer scroll */
+.aparece { opacity: 0; transform: translateY(48px) scale(.98); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+.aparece.visible { opacity: 1; transform: none; }
+
+/* Frases que se iluminan */
+.frase { transition: color .7s ease; }
+
+/* Brillo de fondo */
+.brillo { background: radial-gradient(circle, rgba(200,157,102,.22) 0%, rgba(200,157,102,.06) 40%, transparent 70%); filter: blur(40px); animation: respira 6s ease-in-out infinite; }
+@keyframes respira { 50% { transform: translate(-50%, -50%) scale(1.15); opacity: .7; } 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+
+.texto-degradado { background: linear-gradient(90deg, #E9CFA6 0%, #C89D66 45%, #F6F3EC 70%, #C89D66 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: brilla 5s linear infinite; }
+@keyframes brilla { to { background-position: -200% center; } }
+
+.tarjeta { transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+.tarjeta:hover { transform: translateY(-6px); box-shadow: 0 24px 60px -20px rgba(0,0,0,.35); }
+
+.rebote { animation: rebote 1.8s ease-in-out infinite; }
+@keyframes rebote { 50% { transform: translateY(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .entra, .aparece { opacity: 1; transform: none; filter: none; animation: none; transition: none; }
+  .brillo, .texto-degradado, .rebote { animation: none; }
+}
